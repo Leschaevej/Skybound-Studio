@@ -1,5 +1,5 @@
 # Skybound Studio
-Projet fullstack Node.js + Next.js (Frontend + Backend)
+Site de la societé Skybound Studio
 
 ## Installation
 npm install
