@@ -1,9 +1,33 @@
 :root {
-    --mainColor: #D97B50;
+    --logoColor: #DBDBDB; 
+    --mainColor: #bb663f;
+    --mainBackgroundColor: #1F2024;
+    --mainTextColor: #DBDBDB;
+    --headerColor: #1F2024;
     --glassColor: 219, 219, 219;
+    --radarColor: #77A26B;
+    --fighterColor: #D06C6C;
+    --towerColor: #6F62E4;
+
 }
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+main{
+    color: var(--mainTextColor);
+    background-color: var(--mainBackgroundColor);
+}
+h2{
+    font-size: 68px;
+    text-align: center;
+    padding: 50px 0 50px 0;
+}
+h3{
+    font-size: 48px;
+    margin: 10px 0;
+}
+p{
+    font-size: 32px;
 }

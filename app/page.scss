@@ -15,6 +15,7 @@
             font-size: 48px;
             margin: 0 0 10px 0;
             font-weight: 800;
+            text-align: left;
         }
         p {
             font-size: 32px;
@@ -52,6 +53,43 @@
                     inset 6px 0 6px rgba(var(--glassColor), 0.25),
                     inset -6px 0 6px rgba(var(--glassColor), 0.25);
                 cursor: pointer;
+            }
+        }
+    }
+}
+.dream{
+    padding: 0 100px;
+    .worker{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        img{
+            width: 35%;
+            border-radius: 50px;
+        }
+    }
+    
+}
+.method{
+    padding: 0 100px;
+    .list{
+        display: flex;
+        gap: 170px;
+        .column{
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            .radar{
+                height: 200px;
+                color: var(--radarColor);
+            }
+            .fighter{
+                height: 200px;
+                color: var(--fighterColor);
+            }
+            .tower{
+                height: 200px;
+                color: var(--towerColor);
             }
         }
     }
