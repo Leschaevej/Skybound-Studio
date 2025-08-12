@@ -1,0 +1,20 @@
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    padding: 30px 50px 30px 30px;
+    background-color: var(--footerColor);
+    color: var(--mainTextColor);
+    border-top: 3px solid var(--mainColor);
+    .logo {
+        height: 50px;
+        width: 50px;
+    }
+    .copy{
+        font-size: 24px;
+    }
+    .brand{
+        font-size: 32px;
+    }
+}

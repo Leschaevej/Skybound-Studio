@@ -5,18 +5,30 @@ import "./page.scss";
 import Radar from './assets/radar.svg';
 import Fighter from './assets/fighter.svg';
 import Tower from './assets/tower.svg';
+import Create from './assets/create.svg';
+import Refresh from './assets/refresh.svg';
+import Strategy from './assets/strategy.svg';
+import Wrench from './assets/wrench.svg';
 
 export default function Home() {
+    const scrollToSection = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            const yOffset = -100;
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
     return (
         <main>
-            <section className="hero">
+            <section id="hero" className="hero">
                 <div className="intro">
                     <h2>Propulsez votre présence digitale avec légèreté et précision.</h2>
                     <p>Studio créatif spécialisé en design et développement web.</p>
                 </div>
                 <div className="action">
-                    <button>Services</button>
-                    <button>Contact</button>
+                    <button onClick={() => scrollToSection('services')}>Services</button>
+                    <button onClick={() => scrollToSection('contact')}>Contact</button>
                 </div>
             </section>
             <section className="dream">
@@ -47,6 +59,76 @@ export default function Home() {
                         <Tower className="tower" />
                         <h3>Support</h3>
                         <p>Un suivi personnalisé tout au long du projet, avec une assistance pour répondre aux questions, ajuster les solutions et assurer une évolution conforme aux besoins. La réussite du projet est une priorité.</p>
+                    </div>
+                </div>
+            </section>
+            <section id="services" className="services">
+                <h2 className={robotoSerif.className}>Nos services</h2>
+                <div className="grid">
+                    <div>
+                        <Create className="create"/>
+                        <h3>Création</h3>
+                        <p>Sites vitrines, portfolios, boutiques en ligne adaptés à votre activité.</p>
+                    </div>
+                    <div>
+                        <Refresh className="refresh"/>
+                        <h3>Refonte</h3>
+                        <p>Amélioration de sites existants pour une meilleure performance et visibilité.</p>
+                    </div>
+                    <div>
+                        <Wrench className="wrench"/>
+                        <h3>Maintenance</h3>
+                        <p>Mises à jour, assistance technique et suivi régulier.</p>
+                    </div>
+                    <div>
+                        <Strategy className="strategy"/>
+                        <h3>Stratégie digitale</h3>
+                        <p>Conseils personnalisés pour booster votre présence en ligne.</p>
+                    </div>
+                </div>
+            </section>
+            <section className="behind">
+                <h2 className={robotoSerif.className}>Derriere Sybound Studio</h2>
+                <div className="content">
+                    <p>Skybound Studio est l’alliance entre créativité, précision et écoute.</p>
+                    <p>Le studio conçoit des sites web modernes et sur-mesure pour indépendants, artisans et petites entreprises.</p>
+                    <p>Chaque projet est une nouvelle trajectoire : un accompagnement complet, de l’analyse à la mise en ligne, avec une approche claire, structurée et toujours centrée sur les objectifs du client.</p>
+                    <p>Notre but ? Faire décoller la présence en ligne avec un site performant, unique et prêt à évoluer.</p>
+                </div>
+            </section>
+            <section id="contact" className="contact">
+                <h2 className={robotoSerif.className}>Contactez nous</h2>
+                <div className="content">
+                    <p>Nous sommes convaincus que votre entreprise est exceptionnelle, ou que vous avez une idée géniale ! Nous sommes impatients d'en apprendre davantage afin de vous soutenir pleinement dans son développement.</p>
+                    <div className="panel">
+                        <div className="details">
+                            <h3>N’hésitez pas</h3>
+                            <p>07 81 07 63 89</p>
+                            <p>contact@skyboundstudio.fr</p>
+                            <p>1 Bis Cour D’orbitelle<br/>Aix en Provence 13100</p>
+                        </div>
+                        <form className="form">
+                            <div>
+                                <label htmlFor="name">Nom</label>
+                                <input type="text" id="name" name="name" required />
+                            </div>
+
+                            <div>
+                                <label htmlFor="email">E-mail</label>
+                                <input type="email" id="email" name="email" required />
+                            </div>
+
+                            <div>
+                                <label htmlFor="phone">Téléphone</label>
+                                <input type="tel" id="phone" name="phone" />
+                            </div>
+
+                            <div>
+                                <label htmlFor="message">Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit">Envoyer</button>
+                        </form>
                     </div>
                 </div>
             </section>

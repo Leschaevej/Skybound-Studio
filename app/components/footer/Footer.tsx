@@ -1,0 +1,18 @@
+'use client';
+
+import "./Footer.scss";
+import { robotoSerif } from '../../font';
+import Logo from '../../../app/assets/logo.svg';
+
+export default function Footer() {
+
+  return (
+    <footer>
+        <Logo className="logo" />
+        <p className={robotoSerif.className}>
+            <span className="copy">© 2025 by </span>
+            <span className="brand">Skybound Studio</span>
+        </p>
+    </footer>
+  )
+}

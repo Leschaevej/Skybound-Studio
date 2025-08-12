@@ -6,10 +6,10 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 160px;
-    padding: 0 50px 0 30px;
-    color: var(--logoColor);
-    z-index: 2;
+    height: fit-content;
+    padding: 30px 50px 30px 50px;
+    color: var(--mainTextColor);
+    z-index: 4;
     background-color: transparent;
     transition: background-color 0.3s ease;
     &.scrolled {
@@ -20,11 +20,10 @@ header {
         gap: 30px;
         align-items: center;
         .logo {
-            height: 100px;
-            width: 100px;
+            height: 50px;
         }
-        h1{
-            font-size: 48px;
+        h1 {
+            font-size: 50px;
             font-weight: 700;
         }
     }
@@ -32,5 +31,54 @@ header {
         height: 50px;
         width: 50px;
         cursor: pointer;
+        transition: color ease 0.3s;
+        z-index: 4 ;
+        &:hover {
+            color: var(--mainColor);
+        }
+    }
+}
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 3;
+}
+.side {
+    position: fixed;
+    top: 125px;
+    right: -226px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 15px;
+    background-color: rgba(var(--glassColor), 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow:
+        inset 0 4px 4px rgba(var(--glassColor), 0.15),
+        inset 0 -4px 4px rgba(var(--glassColor), 0.15),
+        inset 4px 0 4px rgba(var(--glassColor), 0.15),
+        inset -4px 0 4px rgba(var(--glassColor), 0.15);
+    transition: right 0.3s ease;
+    z-index: 4;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    &.open {
+        right: 30px;
+    }
+    nav ul {
+        list-style: none;
+        li {
+            a {
+                color: var(--mainTextColor);
+                font-size: 48px;
+                font-weight: 800;
+                color: var(--mainColor);
+                text-decoration: none;
+                &:hover {
+                color: var(--mainColor);
+                }
+            }
+        }
     }
 }
