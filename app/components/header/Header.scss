@@ -1,3 +1,5 @@
+@use '../../mixins' as *;
+
 header {
     display: flex;
     justify-content: space-between;
@@ -7,32 +9,31 @@ header {
     left: 0;
     width: 100%;
     height: fit-content;
-    padding: 30px 50px 30px 50px;
     color: var(--mainTextColor);
     z-index: 4;
     background-color: transparent;
     transition: background-color 0.3s ease;
+    @include padding(20px, 30px 50px 30px 50px, 30px 50px 30px 50px);
     &.scrolled {
         background-color: var(--headerColor);
     }
     .brand {
         display: flex;
-        gap: 30px;
         align-items: center;
+        @include gap(10px, 30px, 30px);
         .logo {
-            height: 50px;
+            @include height(30px, 50px, 50px);
         }
         h1 {
-            font-size: 50px;
             font-weight: 700;
+            @include fontSize(20px, 50px, 50px);
         }
     }
     .menu {
-        height: 50px;
-        width: 50px;
         cursor: pointer;
         transition: color ease 0.3s;
         z-index: 4 ;
+        @include height(30px, 50px, 50px);
         &:hover {
             color: var(--mainColor);
         }
@@ -45,7 +46,6 @@ header {
 }
 .side {
     position: fixed;
-    top: 125px;
     right: -226px;
     width: fit-content;
     height: fit-content;
@@ -63,6 +63,8 @@ header {
     padding: 30px;
     display: flex;
     flex-direction: column;
+    @include top(95px, 125px, 125px);
+    @include padding(15px, 30px, 30px);
     &.open {
         right: 30px;
     }
@@ -75,8 +77,10 @@ header {
                 font-weight: 800;
                 color: var(--mainColor);
                 text-decoration: none;
+                @include fontSize(20px, 48px, 48px);
                 &:hover {
                 color: var(--mainColor);
+                
                 }
             }
         }

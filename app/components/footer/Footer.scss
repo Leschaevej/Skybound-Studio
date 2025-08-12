@@ -1,20 +1,27 @@
+@use '../../mixins' as *;
+
 footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: fit-content;
-    padding: 30px 50px 30px 30px;
     background-color: var(--footerColor);
     color: var(--mainTextColor);
     border-top: 3px solid var(--mainColor);
+    @include padding(20px, 30px 50px 30px 30px, 30px 50px 30px 30px);
     .logo {
         height: 50px;
-        width: 50px;
     }
-    .copy{
-        font-size: 24px;
+    p{
+        display: flex;
+        @include alignItems(flex-start, center, center);
+        @include flexDirection(column, row, row);
+        .copy{
+            @include fontSize(16px, 24px, 24px);
+        }
+        .brand{
+            @include fontSize(20px, 32px, 32px);        
+        }
     }
-    .brand{
-        font-size: 32px;
-    }
+    
 }

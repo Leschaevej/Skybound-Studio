@@ -1,3 +1,5 @@
+@use './mixins.scss' as *;
+
 :root {
     --mainColor: #bb663f;
     --mainBackgroundColor: #1F2024;
@@ -18,20 +20,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 main{
     color: var(--mainTextColor);
     background-color: var(--mainBackgroundColor);
 }
 h2{
-    font-size: 68px;
     text-align: center;
-    padding: 50px 0 50px 0;
+    @include padding(30px 0 30px 0, 50px 0 50px 0, 50px 0 50px 0);
+    @include fontSize(22px, 68px, 68px);
 }
 h3{
-    font-size: 48px;
     margin: 10px 0;
+    @include fontSize(22px, 48px, 48px);
 }
 p{
-    font-size: 32px;
+    @include fontSize(18px, 32px, 32px);
 }

@@ -14,7 +14,8 @@ export default function Home() {
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
-            const yOffset = -100;
+            const isMobile = window.innerWidth <= 767;
+            const yOffset = isMobile ? -50 : -100;
             const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
             window.scrollTo({ top: y, behavior: 'smooth' });
         }
@@ -33,13 +34,15 @@ export default function Home() {
             </section>
             <section className="dream">
                 <h2 className={robotoSerif.className}>Transformez vos rêves en projets</h2>
-                <div className="worker">
-                    <p>Chaque projet est unique et mérite une attention personnalisée. Skybound Studio vous accompagne pour valoriser votre savoir-faire avec rigueur et passion.</p>
-                    <img src="/worker1.webp" alt="Artisant" />
-                </div>
-                <div className="worker">
-                    <img src="/worker2.webp" alt="Association" />
-                    <p>De la conception à la réalisation, l’objectif est d’assurer une présence digitale claire, performante, et qui reflète pleinement votre identité.</p>
+                <div className="content">
+                    <div className="worker">
+                        <p>Chaque projet est unique et mérite une attention personnalisée. Skybound Studio vous accompagne pour valoriser votre savoir-faire avec rigueur et passion.</p>
+                        <img src="/worker1.webp" alt="Artisant" />
+                    </div>
+                    <div className="worker">
+                        <img src="/worker2.webp" alt="Association" />
+                        <p>De la conception à la réalisation, l’objectif est d’assurer une présence digitale claire, performante, et qui reflète pleinement votre identité.</p>
+                    </div>
                 </div>
             </section>
             <section className="method">
@@ -62,6 +65,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+            
             <section id="services" className="services">
                 <h2 className={robotoSerif.className}>Nos services</h2>
                 <div className="grid">

@@ -20,11 +20,11 @@ export default function Header() {
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
-            const yOffset = -100;
+            const isMobile = window.innerWidth <= 767;
+            const yOffset = isMobile ? -50 : -100;
             const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
             window.scrollTo({ top: y, behavior: 'smooth' });
         }
-        setMenuOpen(false);
     };
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {

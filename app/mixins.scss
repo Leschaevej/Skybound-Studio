@@ -1,0 +1,131 @@
+@mixin height($mobile, $tablet, $desktop) {
+  & {
+    height: $desktop;
+  }
+  @media (max-width: 1439px) {
+    height: $tablet;
+  }
+  @media (max-width: 767px) {
+    height: $mobile;
+  }
+}
+
+@mixin width($mobile, $tablet, $desktop) {
+  & {
+    width: $desktop;
+  }
+  @media (max-width: 1439px) {
+    width: $tablet;
+  }
+  @media (max-width: 767px) {
+    width: $mobile;
+  }
+}
+
+@mixin padding($mobile, $tablet, $desktop) {
+  & {
+    padding: $desktop;
+  }
+  @media (max-width: 1439px) {
+    padding: $tablet;
+  }
+  @media (max-width: 767px) {
+    padding: $mobile;
+  }
+}
+
+@mixin flexDirection($mobile, $tablet, $desktop) {
+  & {
+    flex-direction: $desktop;
+  }
+  @media (max-width: 1439px) {
+    flex-direction: $tablet;
+  }
+  @media (max-width: 767px) {
+    flex-direction: $mobile;
+  }
+}
+
+@mixin alignItems($mobile, $tablet, $desktop) {
+  & {
+    align-items: $desktop;
+  }
+  @media (max-width: 1439px) {
+    align-items: $tablet;
+  }
+  @media (max-width: 767px) {
+    align-items: $mobile;
+  }
+}
+
+@mixin justifyContent($mobile, $tablet, $desktop) {
+  & {
+    justify-content: $desktop;
+  }
+  @media (max-width: 1439px) {
+    justify-content: $tablet;
+  }
+  @media (max-width: 767px) {
+    justify-content: $mobile;
+  }
+}
+
+@mixin gap($mobile, $tablet, $desktop) {
+  & {
+    gap: $desktop;
+  }
+  @media (max-width: 1439px) {
+    gap: $tablet;
+  }
+  @media (max-width: 767px) {
+    gap: $mobile;
+  }
+}
+
+@mixin fontSize($mobile, $tablet, $desktop) {
+  & {
+    font-size: $desktop;
+  }
+  @media (max-width: 1439px) {
+    font-size: $tablet;
+  }
+  @media (max-width: 767px) {
+    font-size: $mobile;
+  }
+}
+
+@mixin top($mobile, $tablet, $desktop) {
+  & {
+    top: $desktop;
+  }
+  @media (max-width: 1439px) {
+    top: $tablet;
+  }
+  @media (max-width: 767px) {
+    top: $mobile;
+  }
+}
+
+@mixin backgroundPosition($mobile, $tablet, $desktop) {
+  & {
+    background-position: $desktop;
+  }
+  @media (max-width: 1439px) {
+    background-position: $tablet;
+  }
+  @media (max-width: 767px) {
+    background-position: $mobile;
+  }
+}
+
+@mixin borderRadius($mobile, $tablet, $desktop) {
+  & {
+    border-radius: $desktop;
+  }
+  @media (max-width: 1439px) {
+    border-radius: $tablet;
+  }
+  @media (max-width: 767px) {
+    border-radius: $mobile;
+  }
+}
