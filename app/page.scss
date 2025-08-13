@@ -188,42 +188,6 @@
                 flex-direction: column;
                 @include gap(10px, 10px, 30px);
             }
-            .form{
-                display: flex;
-                flex-direction: column;
-                @include gap(10px, 30px, 30px);
-                @include width(100%, 100%, 50%);
-                input, textarea{
-                    width: 100%;
-                    background-color: transparent;
-                    border: none;
-                    border-bottom: 1px solid var(--mainTextColor);
-                    font-size: inherit;
-                    @include height(30px, 40px, 50px);
-                }
-                label{
-                    position: absolute;
-                    @include fontSize(20px, 26px, 32px);
-                }
-                button{
-                    width: fit-content;
-                    font-weight: 800;
-                    font-family: inherit;
-                    border: none;
-                    color: var(--secondTextColor);
-                    background-color: var(--mainColor);
-                    border: 1px solid transparent;
-                    transition: color ease 0.3s, background-color ease 0.3s, border ease 0.3s;
-                    @include borderRadius(6px, 7.5px, 7.5px);
-                    @include fontSize(24px, 32px, 32px);
-                    @include padding(5px 15px, 10px 15px, 10px 15px);
-                    &:hover{
-                        background-color: var(--mainBackgroundColor);
-                        color: var(--mainColor);
-                        border: 1px solid var(--mainColor);
-                    }
-                }
-            }
         }
     }
 }
