@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         "Agence de développement web créative, spécialisée dans les sites modernes, performants et sur mesure.",
         images: [
         {
-            url: "https://skyboundstudio.fr/social.webp",
+            url: "https://skyboundstudio.fr/social.png",
             width: 1200,
             height: 630,
             alt: "Skybound Studio",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         title: "Skybound Studio - Développement Web & Design",
         description:
         "Agence de développement web créative, spécialisée dans les sites modernes, performants et sur mesure.",
-        images: ["https://skyboundstudio.fr/social.webp"],
+        images: ["https://skyboundstudio.fr/social.png"],
     },
     alternates: {
         canonical: "https://skyboundstudio.fr",
