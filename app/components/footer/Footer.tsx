@@ -9,9 +9,9 @@ export default function Footer() {
   return (
     <footer>
         <Logo className="logo" />
-        <p className={robotoSerif.className}>
+        <p>
             <span className="copy">© 2025 by </span>
-            <span className="brand">Skybound Studio</span>
+            <span className={`${robotoSerif.className} brand`}>Skybound Studio</span>
         </p>
     </footer>
   )

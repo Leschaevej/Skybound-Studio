@@ -10,17 +10,18 @@ footer{
     border-top: 3px solid var(--mainColor);
     @include padding(20px, 30px 50px 30px 30px, 30px 50px 30px 30px);
     .logo {
-        height: 50px;
+        @include height(30px, 35px, 50px);
     }
     p{
         display: flex;
+        gap: 10px;
         @include alignItems(flex-start, center, center);
         @include flexDirection(column, row, row);
         .copy{
-            @include fontSize(16px, 24px, 24px);
+            @include fontSize(16px, 20px, 24px);
         }
         .brand{
-            @include fontSize(20px, 32px, 32px);        
+            @include fontSize(20px, 26px, 32px);        
         }
     }
     

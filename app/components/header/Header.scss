@@ -20,29 +20,29 @@ header {
     .brand {
         display: flex;
         align-items: center;
-        @include gap(10px, 30px, 30px);
+        gap: clamp(10px, 2vw, 30px);
         .logo {
-            @include height(30px, 50px, 50px);
+            height: clamp(30px, 4vw, 50px);;
         }
         h1 {
             font-weight: 700;
-            @include fontSize(20px, 50px, 50px);
+            font-size: clamp(20px, 3vw, 50px);
         }
     }
     .menu {
         cursor: pointer;
         transition: color ease 0.3s;
         z-index: 4 ;
-        @include height(30px, 50px, 50px);
+        height: clamp(30px, 3vw, 50px);
         &:hover {
             color: var(--mainColor);
         }
     }
 }
 .overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 3;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 3;
 }
 .side {
     position: fixed;
@@ -63,10 +63,10 @@ header {
     padding: 30px;
     display: flex;
     flex-direction: column;
-    @include top(95px, 125px, 125px);
+    top: clamp(80px, 8vw, 128px);
     @include padding(15px, 30px, 30px);
     &.open {
-        right: 30px;
+        right: 10px;
     }
     nav ul {
         list-style: none;
@@ -77,10 +77,9 @@ header {
                 font-weight: 800;
                 color: var(--mainColor);
                 text-decoration: none;
-                @include fontSize(20px, 48px, 48px);
+                font-size: clamp(20px, 4vw, 48px);
                 &:hover {
-                color: var(--mainColor);
-                
+                    color: var(--mainColor);
                 }
             }
         }

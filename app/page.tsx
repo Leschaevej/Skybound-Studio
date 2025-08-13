@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { robotoSerif } from "./font";
 import "./page.scss";
 import Radar from './assets/radar.svg';
@@ -37,10 +38,10 @@ export default function Home() {
                 <div className="content">
                     <div className="worker">
                         <p>Chaque projet est unique et mérite une attention personnalisée. Skybound Studio vous accompagne pour valoriser votre savoir-faire avec rigueur et passion.</p>
-                        <img src="/worker1.webp" alt="Artisant" />
+                        <Image src="/worker1.webp" alt="Artisant" width={500} height={500} style={{ width: "100%", height: "auto" }} />
                     </div>
                     <div className="worker">
-                        <img src="/worker2.webp" alt="Association" />
+                        <Image src="/worker2.webp" alt="Association" width={500} height={500} style={{ width: "100%", height: "auto" }} />
                         <p>De la conception à la réalisation, l’objectif est d’assurer une présence digitale claire, performante, et qui reflète pleinement votre identité.</p>
                     </div>
                 </div>
@@ -103,13 +104,13 @@ export default function Home() {
             <section id="contact" className="contact">
                 <h2 className={robotoSerif.className}>Contactez nous</h2>
                 <div className="content">
-                    <p>Nous sommes convaincus que votre entreprise est exceptionnelle, ou que vous avez une idée géniale ! Nous sommes impatients d'en apprendre davantage afin de vous soutenir pleinement dans son développement.</p>
+                    <p>Nous sommes convaincus que votre entreprise est exceptionnelle, ou que vous avez une idée géniale ! Nous sommes impatients d&apos;en apprendre davantage afin de vous soutenir pleinement dans son développement.</p>
                     <div className="panel">
                         <div className="details">
                             <h3>N’hésitez pas</h3>
                             <p>07 81 07 63 89</p>
                             <p>contact@skyboundstudio.fr</p>
-                            <p>1 Bis Cour D’orbitelle<br/>Aix en Provence 13100</p>
+                            <p>1 Bis Cour D&apos;orbitelle<br/>Aix en Provence 13100</p>
                         </div>
                         <form className="form">
                             <div>

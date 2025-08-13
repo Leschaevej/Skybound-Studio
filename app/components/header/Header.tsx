@@ -54,13 +54,13 @@ export default function Header() {
             <nav>
                 <ul>
                     <li>
-                        <a href="#hero" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}>Accueil</a>
+                        <a href="#hero" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); setMenuOpen(false); }}>Accueil</a>
                     </li>
                     <li>
-                        <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }}>Services</a>
+                        <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); setMenuOpen(false); }}>Services</a>
                     </li>
                     <li>
-                        <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>Contact</a>
+                        <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); setMenuOpen(false); }}>Contact</a>
                     </li>
                 </ul>
             </nav>
