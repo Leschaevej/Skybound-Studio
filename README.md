@@ -5,7 +5,8 @@ Site de la societé Skybound Studio
 npm install
 
 ## .env
-
+MAIL_USER=
+MAIL_PASSWORD=
 
 ## Lancement
 npm run dev

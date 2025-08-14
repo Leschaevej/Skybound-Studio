@@ -28,44 +28,49 @@ export default function Header() {
     };
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-        if (
-            menuOpen &&
-            sideRef.current &&
-            !sideRef.current.contains(event.target as Node) &&
-            menuBtnRef.current &&
-            !menuBtnRef.current.contains(event.target as Node)
-        ) {
-            setMenuOpen(false);
-        }
+            if (
+                menuOpen &&
+                sideRef.current &&
+                !sideRef.current.contains(event.target as Node) &&
+                menuBtnRef.current &&
+                !menuBtnRef.current.contains(event.target as Node)
+            ) {
+                setMenuOpen(false);
+            }
         };
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, [menuOpen]);
     return (
         <>
-        <header className={scrolled ? 'header scrolled' : 'header'}>
-            <div className="brand">
-                <Logo className="logo" />
-                <h1 className={robotoSerif.className}>Skybound Studio</h1>
-            </div>
-            <Menu ref={menuBtnRef} className="menu" onClick={() => setMenuOpen(prev => !prev)}/>
-        </header>
-        <aside ref={sideRef} className={`side ${menuOpen ? 'open' : ''}`}>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="#hero" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); setMenuOpen(false); }}>Accueil</a>
-                    </li>
-                    <li>
-                        <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); setMenuOpen(false); }}>Services</a>
-                    </li>
-                    <li>
-                        <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); setMenuOpen(false); }}>Contact</a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
-        {menuOpen && <div className="overlay"></div>}
+            <header data-testid="header" className={scrolled ? 'header scrolled' : 'header'}>
+                <div className="brand">
+                    <Logo data-testid="logo" className="logo" />
+                    <h1 className={robotoSerif.className}>Skybound Studio</h1>
+                </div>
+                <Menu
+                    ref={menuBtnRef}
+                    data-testid="menu-button"
+                    className="menu"
+                    onClick={() => setMenuOpen(prev => !prev)}
+                />
+            </header>
+            <aside ref={sideRef} data-testid="side" className={`side ${menuOpen ? 'open' : ''}`}>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#hero" onClick={(e) => { e.preventDefault(); scrollToSection('hero'); setMenuOpen(false); }}>Accueil</a>
+                        </li>
+                        <li>
+                            <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); setMenuOpen(false); }}>Services</a>
+                        </li>
+                        <li>
+                            <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); setMenuOpen(false); }}>Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+            {menuOpen && <div className="overlay"></div>}
         </>
     );
 }
