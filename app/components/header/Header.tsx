@@ -86,7 +86,7 @@ export default function Header({ onHeightChange }: HeaderProps) {
                 <div className="brand">
                     <Logo
                         data-testid="logo"
-                        className="logo cursor-pointer"
+                        className="logo"
                         onClick={() => scrollToSection('hero')}
                     />
                     <h1 className={robotoSerif.className}>Skybound Studio</h1>

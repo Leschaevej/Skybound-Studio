@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "app/components/preloader"  ],
   "exclude": [
     "node_modules"
   ]

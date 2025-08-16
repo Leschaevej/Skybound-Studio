@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import Intro from "./components/preloader/Preloader";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import "./globals.scss";
@@ -117,6 +118,7 @@ export default function RootLayout({
                 />
             </head>
             <body className={robotoCondensed.className}>
+                <Intro/>
                 <Header />
                 <main>{children}</main>
                 <Footer />

@@ -21,6 +21,7 @@ header {
         gap: clamp(10px, 2.083vw, 30px);
         .logo {
             height: clamp(30px, 3.473vw, 50px);
+            transition: color ease 0.3s;
             cursor: pointer;
             &:hover {
                 color: var(--mainColor);

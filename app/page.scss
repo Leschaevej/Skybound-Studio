@@ -8,6 +8,7 @@
     z-index: 1;
     background: url('/fond.webp') no-repeat;
     background-size: cover;
+    overflow: visible;
     padding-inline: clamp(30px, 3.473vw, 50px);
     @include backgroundPosition(63% top, 65% top, center top);
     @include flexDirection(column, row, row);
@@ -35,7 +36,7 @@
         justify-content: flex-end;
         margin-left: auto;
         gap: 30px;
-        width: 50%;
+        width: 40%;
         button {
             border: none;
             background-color: rgba(var(--glassColor), 0.05);

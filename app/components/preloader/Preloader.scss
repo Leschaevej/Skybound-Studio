@@ -1,0 +1,53 @@
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--mainBackgroundColor);
+    color: var(--mainTextColor);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    gap: clamp(30px, 3.473vw, 50px);
+    transition: transform 1s ease;
+    .logo {
+        height: clamp(150px, 17.361vw, 250px);
+        overflow: visible;
+        opacity: 0;
+        path {
+            stroke-width: 1;
+            stroke: var(--mainTextColor);
+            fill: var(--mainBackgroundColor);
+        }
+    }
+    .text {
+        position: relative;
+        width: max-content;
+        margin: 0 auto;
+        overflow: visible;
+        .placeholder {
+            visibility: hidden;
+            font-size: clamp(68px, 6.945vw, 100px);
+        }
+        h2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: clamp(68px, 6.945vw, 100px);
+            white-space: nowrap;
+            &::after {
+                content: "|";
+                animation: blink 1s steps(1) infinite;
+            }
+        }
+    }
+    @keyframes blink {
+        50% { opacity: 0; }
+    }
+}
+.out {
+    transform: translateY(-100%);
+}
