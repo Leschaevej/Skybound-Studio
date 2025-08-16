@@ -8,34 +8,34 @@
     z-index: 1;
     background: url('/fond.webp') no-repeat;
     background-size: cover;
-    @include backgroundPosition(75% top, center top, center top);
-    @include flexDirection(column, column, row);
-    @include alignItems(flex-end, flex-end, center);
-    @include justifyContent(space-around, space-around, space-between);
-    @include padding(0 30px, 0 50px, 0 50px);
+    padding-inline: clamp(30px, 3.473vw, 50px);
+    @include backgroundPosition(63% top, 65% top, center top);
+    @include flexDirection(column, row, row);
+    @include justifyContent(space-around, space-between, space-between);
     .intro {
-        @include padding(40px 0 0 0, 40px 0 0 0, 0 0 220px 0);
-        @include width(100%, 100%, 40%);
+        display: flex;
+        flex-direction: column;
+        @include width(100%, 40%, 40%);
         h2 {
             font-weight: 800;
             text-align: left;
-            @include width(50%, 70%, 100%);
-            @include fontSize(22px, 35px, 48px);
+            font-size: clamp(22px, 3.333vw, 48px);
+            @include width(80%, 100%, 100%);
         }
         p {
             font-weight: 400;
-            text-align: right;
             margin-left: auto;
-            @include fontSize(20px, 32px, 32px);
-            @include width(50%, 30%, 70%);
+            font-size: clamp(20px, 2.222vw, 32px);
+            @include width(35%, 100%, 100%);
         }
     }
     .action {
         display: flex;
         flex-direction: column;
+        justify-content: flex-end;
+        margin-left: auto;
         gap: 30px;
-        @include padding(0 0 80px 0, 0 0 80px 0, 180px 0 0 0);
-        @include width(60%, 30%, 30%);
+        width: 50%;
         button {
             border: none;
             background-color: rgba(var(--glassColor), 0.05);
@@ -50,9 +50,9 @@
             font-weight: 800;
             color: var(--mainColor);
             transition: background-color ease 0.3s, box-shadow ease 0.3s;
-            @include borderRadius(7.5px, 15px, 15px);
-            @include fontSize(24px, 48px, 48px);
-            @include height(50px, 100px, 100px);
+            border-radius: clamp(7.5px, 1.042vw, 15px);
+            font-size: clamp(22px, 3.333vw, 48px);
+            height: clamp(50px, 6.944vw, 100px);
             &:hover {
                 background-color: rgba(var(--glassColor), 0.15);
                 box-shadow:
@@ -68,29 +68,35 @@
 .dream{
     max-width: 1440px;
     margin: 0 auto;
-    @include padding(0 30px, 0 50px, 0 100px);
+    padding-inline: clamp(30px, 3.473vw, 50px);
     .content{
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: clamp(30px, 3.473vw, 50px);
         .worker{
             display: flex;
             align-items: center;
+            gap: clamp(30px, 3.473vw, 50px);
             @include flexDirection(column, row, row);
-            @include gap(10px, 30px, 30px);
-            img{
-                @include width(100%, 50%, 35%);
-                @include borderRadius(29px, 50px, 50px);
+            .wrapper {
+                position: relative;
+                aspect-ratio: 4 / 3;
+                overflow: hidden;
+                border-radius: clamp(20px, 3.473vw, 50px);
+                @include width(100%, 50%, 50%);
+                .image {
+                object-fit: cover;
+                }
             }
-            p {
-                @include width(100%, 65%, 65%);
+            figcaption {
+                @include width(100%, 50%, 50%);
             }
             @media (max-width: 767px) {
                 flex-direction: column;
                 img {
                     order: 1;
                 }
-                p {
+                figcaption {
                     order: 2;
                 }
             }
@@ -100,7 +106,7 @@
 .method{
     max-width: 1440px;
     margin: 0 auto;
-    @include padding(0 30px, 0 50px, 0 100px);
+    padding-inline: clamp(30px, 3.473vw, 50px);
     .list{
         display: flex;
         justify-content: space-between;
@@ -112,15 +118,15 @@
             text-align: left;
             .radar{
                 color: var(--radarColor);
-                @include height(100px, 150px, 200px);
+                height: clamp(100px, 13.9vw, 200px);
             }
             .fighter{
                 color: var(--fighterColor);
-                @include height(100px, 150px, 200px);
+                height: clamp(100px, 13.9vw, 200px);
             }
             .tower{
                 color: var(--towerColor);
-                @include height(100px, 150px, 200px);
+                height: clamp(100px, 13.9vw, 200px);
             }
         }
     }
@@ -129,52 +135,53 @@
     max-width: 1440px;
     margin: 0 auto;
     text-align: center;
-    @include padding(0 30px, 0 50px, 0 100px);
+    padding-inline: clamp(30px, 3.473vw, 50px);
     .grid{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        @include gap(30px, 50px, 50px);
+        gap: clamp(30px, 3.473vw, 50px);
         .create{
             color: var(--createColor);
-            @include height(50px, 100px, 100px);
+            height: clamp(50px, 6.945vw, 100px);
         }
         .refresh{
             color: var(--refreshColor);
-            @include height(50px, 100px, 100px);
+            height: clamp(50px, 6.945vw, 100px);
         }
         .wrench{
             color: var(--wrenchColor);
-            @include height(50px, 100px, 100px);
+            height: clamp(50px, 6.945vw, 100px);
         }
         .strategy{
             color: var(--strategyColor);
-            @include height(50px, 100px, 100px);
+            height: clamp(50px, 6.945vw, 100px);
         }
     }
 }
 .behind{
     max-width: 1440px;
     margin: 0 auto;
-    @include padding(0 30px, 0 50px, 0 100px);
+    padding-inline: clamp(30px, 3.473vw, 50px);
     .content{
         display: flex;
         flex-direction: column;
-        @include gap(10px, 30px, 30px);
+        gap: clamp(10px, 2.083vw, 30px);
     }
 }
 .contact{
     max-width: 1440px;
     margin: 0 auto;
-    @include padding(0 30px 30px 30px, 0 50px 50px 50px, 0 100px 50px 100px);
+    padding-inline: clamp(30px, 3.473vw, 50px);
+    padding-bottom: clamp(30px, 3.473vw, 50px);
     .content{
         display: flex;
         flex-direction: column;
-        @include gap(10px, 50px, 50px);
+        gap: clamp(30px, 3.473vw, 50px);
         .panel{ 
             display: flex;
             justify-content: space-between;
+            gap: clamp(30px, 3.473vw, 50px);
             @include flexDirection(column, column, row);
-            @include gap(10px, 10px, 0);
             @media (max-width: 1439px) {
                 .details {
                     order: 2;
@@ -186,7 +193,7 @@
             .details{
                 display: flex;
                 flex-direction: column;
-                @include gap(10px, 10px, 30px);
+                gap: clamp(10px, 2.083vw, 30px);
             }
         }
     }

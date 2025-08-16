@@ -12,7 +12,7 @@ describe('Header', () => {
         expect(title).toBeInTheDocument();
     });
     test('menu s’ouvre et se ferme au clic', () => {
-        const menuButton = screen.getByTestId('menu-button');
+        const menuButton = screen.getByTestId('menu');
         const side = screen.getByTestId('side');
         expect(side).not.toHaveClass('open');
         fireEvent.click(menuButton);
@@ -21,7 +21,7 @@ describe('Header', () => {
         expect(side).not.toHaveClass('open');
     });
     test('ferme le menu si on clique en dehors', () => {
-        const menuButton = screen.getByTestId('menu-button');
+        const menuButton = screen.getByTestId('menu');
         fireEvent.click(menuButton);
         const side = screen.getByTestId('side');
         expect(side).toHaveClass('open');

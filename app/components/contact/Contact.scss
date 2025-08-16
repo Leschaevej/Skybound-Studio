@@ -1,23 +1,27 @@
 @use '../../mixins' as *;
 
-.form{
+.form {
     display: flex;
     flex-direction: column;
-    @include gap(10px, 30px, 30px);
+    gap: clamp(10px, 2.083vw, 30px);
     @include width(100%, 100%, 50%);
-    input, textarea{
+    input,
+    textarea {
         width: 100%;
         background-color: transparent;
         border: none;
         border-bottom: 1px solid var(--mainTextColor);
         color: var(--mainTextColor);
-        font-size: 26px;
-        @include height(30px, 40px, 50px);
+        font-size: clamp(20px, 2.223vw, 32px);
+        height: clamp(30px, 3.473vw, 50px);
         &::placeholder {
             color: var(--mainTextColor);
-            font-size: 26px;
+            font-size: clamp(20px, 2.223vw, 32px);
         }
         &.invalid::placeholder {
+            color: var(--errorColor);
+        }
+        &.invalid {
             color: var(--errorColor);
         }
         &:focus {
@@ -38,18 +42,7 @@
         -webkit-box-shadow: 0 0 0 1000px var(--mainBackgroundColor) inset;
         transition: background-color 5000s ease-in-out 0s;
     }
-    .label {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
-    button{
+    button {
         width: fit-content;
         font-weight: 800;
         font-family: inherit;
@@ -58,12 +51,12 @@
         background-color: var(--mainColor);
         border: 1px solid transparent;
         transition: color ease 0.3s, background-color ease 0.3s, border ease 0.3s, width 0.3s ease;
-        @include borderRadius(6px, 7.5px, 7.5px);
-        @include fontSize(24px, 32px, 32px);
-        @include padding(5px 15px, 10px 15px, 10px 15px);
+        border-radius: clamp(6px, 0.521vw, 7.5px);
+        font-size: clamp(20px, 2.223vw, 32px);
+        padding: clamp(5px, 0.694vw, 10px) clamp(15px, 1.042vw, 15px);
         &:hover,
         &.sending,
-        &.success{
+        &.success {
             background-color: var(--mainBackgroundColor);
             color: var(--mainColor);
             border: 1px solid var(--mainColor);

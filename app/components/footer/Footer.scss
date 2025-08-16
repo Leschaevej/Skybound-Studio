@@ -8,9 +8,9 @@ footer{
     background-color: var(--footerColor);
     color: var(--mainTextColor);
     border-top: 3px solid var(--mainColor);
-    @include padding(20px, 30px 50px 30px 30px, 30px 50px 30px 30px);
+    padding: clamp(20px, 2.083vw, 30px) clamp(30px, 3.473vw, 50px);
     .logo {
-        @include height(30px, 35px, 50px);
+        height: clamp(30px, 3.473vw, 50px);
     }
     p{
         display: flex;
@@ -18,11 +18,10 @@ footer{
         @include alignItems(flex-start, center, center);
         @include flexDirection(column, row, row);
         .copy{
-            @include fontSize(16px, 20px, 24px);
+            font-size: clamp(20px, 2.222vw, 32px);
         }
         .brand{
-            @include fontSize(20px, 26px, 32px);        
+            font-size: clamp(24px, 3.333vw, 48px);       
         }
     }
-    
 }
