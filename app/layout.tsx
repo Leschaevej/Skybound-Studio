@@ -79,6 +79,11 @@ export default function RootLayout({
                 <link rel="apple-touch-icon" href="/apple.png" />
                 <link rel="manifest" href="/site.webmanifest" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@Fre3DoMind" />
+                <meta name="twitter:title" content="Skybound Studio - Développement Web & Design" />
+                <meta name="twitter:description" content="Agence de développement web créative, spécialisée dans les sites modernes, performants et sur mesure." />
+                <meta name="twitter:image" content="https://skybound-studio.vercel.app/social.png" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
