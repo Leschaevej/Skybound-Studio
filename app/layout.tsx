@@ -8,7 +8,6 @@ import "./globals.scss";
 import { robotoCondensed } from "./font";
 
 export const metadataBase = new URL("https://skybound-studio.vercel.app/");
-
 export const metadata: Metadata = {
     title: {
         default: "Skybound Studio - Développement Web & Design",
@@ -44,13 +43,10 @@ export const metadata: Metadata = {
         languages: { "fr-FR": "https://skybound-studio.vercel.app" },
     },
 };
-
 export const viewport = {
     width: "device-width",
     initialScale: 1,
 };
-
-// Données structurées pour le SEO
 const businessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -67,7 +63,6 @@ const businessSchema = {
     telephone: "+33 7 81 07 63 89",
     url: "https://skybound-studio.vercel.app",
 };
-
 const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -79,7 +74,6 @@ const websiteSchema = {
         name: "Skybound Studio",
     },
 };
-
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="fr">
