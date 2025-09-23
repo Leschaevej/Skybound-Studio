@@ -204,8 +204,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <Header />
                 <main>{children}</main>
                 <Footer />
-                <Analytics />
-                <SpeedInsights />
+                <Analytics debug={false} />
+                <SpeedInsights debug={false} />
             </body>
         </html>
     );

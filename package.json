@@ -3,12 +3,12 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "npm install && next dev",
-    "update": "npx ncu -u && npm install",
-    "lint": "next lint",
-    "test": "jest"
+        "dev": "next dev",
+        "build": "next build",
+        "start": "npm install && next dev",
+        "update": "npx ncu -u && npm install",
+        "lint": "next lint",
+        "test": "jest"
     },
     "dependencies": {
         "@vercel/analytics": "^1.5.0",
