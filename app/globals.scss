@@ -45,10 +45,11 @@ a[href^="tel"] {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
     scroll-behavior: smooth;
 }
+
 body {
+    overflow-x: hidden;
     background-color: var(--mainBackgroundColor);
 }
 main{

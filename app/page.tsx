@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { robotoSerif } from "./font";
 import "./page.scss";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Contact from "./components/contact/Contact";
 import Radar from './assets/radar.svg';
 import Fighter from './assets/fighter.svg';
@@ -16,6 +16,58 @@ import Header from "./components/header/Header";
 
 export default function Home() {
     const [headerHeight, setHeaderHeight] = useState(0);
+    const [preloaderComplete, setPreloaderComplete] = useState(false);
+    const startHeroAnimations = () => {
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            const h2 = hero.querySelector('h2');
+            const p = hero.querySelector('p');
+            const buttons = hero.querySelectorAll('button');
+            h2?.classList.add('animate');
+            p?.classList.add('animate');
+            buttons.forEach(btn => btn.classList.add('animate-frame'));
+            setTimeout(() => {
+                buttons.forEach(btn => btn.classList.add('animate-text'));
+            }, 600);
+        }
+    };
+
+    useEffect(() => {
+        if (preloaderComplete) {
+            const timer = setTimeout(startHeroAnimations, 200);
+            return () => clearTimeout(timer);
+        }
+    }, [preloaderComplete]);
+    useEffect(() => {
+        const checkPreloader = () => {
+            const preloaderEl = document.querySelector('.preloader');
+            if (!preloaderEl) {
+                setPreloaderComplete(true);
+            }
+        };
+        const observer = new MutationObserver(checkPreloader);
+        observer.observe(document.body, { childList: true, subtree: true });
+        checkPreloader();
+        return () => observer.disconnect();
+    }, []);
+    useEffect(() => {
+        const observerOptions = {
+            threshold: 1.0,
+        };
+        const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        };
+        const intersectionObserver = new IntersectionObserver(handleIntersection, observerOptions);
+        const elementsToAnimate = document.querySelectorAll('h2:not(.hero h2):not(.preloader h2), .dream .wrapper, .dream figcaption, .method h3, .method svg, .method p, .services svg, .services h3, .services p, .behind p, .contact .content > p, .contact .details h3, .contact .details p, .contact .panel > :not(.details)');
+        elementsToAnimate.forEach(element => {
+            intersectionObserver.observe(element);
+        });
+        return () => intersectionObserver.disconnect();
+    }, []);
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
