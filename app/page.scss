@@ -86,7 +86,7 @@
                 border-radius: clamp(20px, 3.473vw, 50px);
                 @include width(100%, 50%, 50%);
                 .image {
-                object-fit: cover;
+                    object-fit: cover;
                 }
             }
             figcaption {
@@ -94,7 +94,7 @@
             }
             @media (max-width: 767px) {
                 flex-direction: column;
-                img {
+                .image {
                     order: 1;
                 }
                 figcaption {

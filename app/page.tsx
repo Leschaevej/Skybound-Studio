@@ -111,7 +111,7 @@ export default function Home() {
                     </div>
                 </section>
                 <section className="behind">
-                    <h2 className={robotoSerif.className}>Derriere Skybound Studio</h2>
+                    <h2 className={robotoSerif.className}>Derrière Skybound Studio</h2>
                     <div className="content">
                         <p>Skybound Studio est l’alliance entre créativité, précision et écoute.</p>
                         <p>Le studio conçoit des sites web modernes et sur-mesure pour indépendants, artisans et petites entreprises.</p>
@@ -124,12 +124,12 @@ export default function Home() {
                     <div className="content">
                         <p>Nous sommes convaincus que votre entreprise est exceptionnelle...</p>
                         <div className="panel">
-                            <div className="details">
-                                <h3>N’hésitez pas</h3>
+                            <address className="details">
+                                <h3>N'hésitez pas</h3>
                                 <p><a href="tel:0781076389">07 81 07 63 89</a></p>
                                 <p>leschaeve.jimmy@gmail.com</p>
                                 <p>1 Bis Cour D&apos;orbitelle<br/>Aix en Provence 13100</p>
-                            </div>
+                            </address>
                             <Contact />
                         </div>
                     </div>
