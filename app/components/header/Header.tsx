@@ -9,7 +9,12 @@ import Menu from '../../../app/assets/menu.svg';
 interface HeaderProps {
   onHeightChange?: (height: number) => void;
 }
-
+const SECTIONS = {
+  HERO: 'hero',
+  SERVICES: 'services',
+  CONTACT: 'contact'
+} as const;
+type SectionId = typeof SECTIONS[keyof typeof SECTIONS];
 export default function Header({ onHeightChange }: HeaderProps) {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -29,7 +34,7 @@ export default function Header({ onHeightChange }: HeaderProps) {
         window.addEventListener('scroll', handleScrollCloseMenu);
         return () => window.removeEventListener('scroll', handleScrollCloseMenu);
     }, [menuOpen]);
-    const scrollToSection = (id: string) => {
+    const scrollToSection = (id: SectionId) => {
         const element = document.getElementById(id);
         if (element && headerRef.current) {
             const headerHeight = headerRef.current.getBoundingClientRect().height;
@@ -53,29 +58,30 @@ export default function Header({ onHeightChange }: HeaderProps) {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, [menuOpen]);
     useEffect(() => {
-        const updateSidePosition = () => {
-            if (sideRef.current) {
-                const header = headerRef.current;
-                if (header) {
-                    const headerHeight = header.getBoundingClientRect().height;
+        const updateHeaderDimensions = () => {
+            if (headerRef.current) {
+                const headerHeight = headerRef.current.getBoundingClientRect().height;
+                if (sideRef.current) {
                     sideRef.current.style.top = `${headerHeight + 10}px`;
+                }
+                if (onHeightChange) {
+                    onHeightChange(headerHeight);
                 }
             }
         };
-        updateSidePosition();
-        window.addEventListener('resize', updateSidePosition);
-        return () => window.removeEventListener('resize', updateSidePosition);
-    }, []);
-    useEffect(() => {
-        const updateHeight = () => {
-            if (headerRef.current && onHeightChange) {
-                onHeightChange(headerRef.current.getBoundingClientRect().height);
-            }
-        };
-        updateHeight();
-        window.addEventListener('resize', updateHeight);
-        return () => window.removeEventListener('resize', updateHeight);
+        updateHeaderDimensions();
+        window.addEventListener('resize', updateHeaderDimensions);
+        return () => window.removeEventListener('resize', updateHeaderDimensions);
     }, [onHeightChange]);
+    const navigationItems = [
+        { id: SECTIONS.HERO, label: 'Accueil' },
+        { id: SECTIONS.SERVICES, label: 'Services' },
+        { id: SECTIONS.CONTACT, label: 'Contact' }
+    ];
+    const handleNavClick = (sectionId: SectionId) => {
+        scrollToSection(sectionId);
+        setMenuOpen(false);
+    };
     return (
         <>
             <header
@@ -87,7 +93,7 @@ export default function Header({ onHeightChange }: HeaderProps) {
                     <Logo
                         data-testid="logo"
                         className="logo"
-                        onClick={() => scrollToSection('hero')}
+                        onClick={() => scrollToSection(SECTIONS.HERO)}
                     />
                     <h1 className={robotoSerif.className}>Skybound Studio</h1>
                 </div>
@@ -96,35 +102,25 @@ export default function Header({ onHeightChange }: HeaderProps) {
                     data-testid="menu"
                     className="menu"
                     onClick={() => setMenuOpen(prev => !prev)}
+                    aria-label="Menu de navigation"
+                    aria-expanded={menuOpen}
+                    role="button"
+                    tabIndex={0}
                 />
             </header>
-            <aside ref={sideRef} data-testid="side" className={`side ${menuOpen ? 'open' : ''}`}>
-                <nav>
-                    <ul>
-                        <li>
-                            <a
-                                href="#hero"
-                                onClick={(e) => { e.preventDefault(); scrollToSection('hero'); setMenuOpen(false); }}
-                            >
-                                Accueil
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#services"
-                                onClick={(e) => { e.preventDefault(); scrollToSection('services'); setMenuOpen(false); }}
-                            >
-                                Services
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#contact"
-                                onClick={(e) => { e.preventDefault(); scrollToSection('contact'); setMenuOpen(false); }}
-                            >
-                                Contact
-                            </a>
-                        </li>
+            <aside ref={sideRef} data-testid="side" className={`side ${menuOpen ? 'open' : ''}`} aria-hidden={!menuOpen}>
+                <nav aria-label="Navigation principale">
+                    <ul role="list">
+                        {navigationItems.map((item) => (
+                            <li key={item.id}>
+                                <a
+                                    href={`#${item.id}`}
+                                    onClick={(e) => { e.preventDefault(); handleNavClick(item.id); }}
+                                >
+                                    {item.label}
+                                </a>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
             </aside>
