@@ -3,7 +3,7 @@
 .form {
     display: flex;
     flex-direction: column;
-    gap: clamp(10px, 2.083vw, 30px);
+    gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
     @include width(100%, 100%, 50%);
     input,
     textarea {
@@ -12,11 +12,11 @@
         border: none;
         border-bottom: 1px solid var(--mainTextColor);
         color: var(--mainTextColor);
-        font-size: clamp(20px, 2.223vw, 32px);
-        height: clamp(30px, 3.473vw, 50px);
+        font-size: clamp(20px, 20px + (32 - 20) * ((100vw - 320px) / (1440 - 320)), 32px);
+        height: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
         &::placeholder {
             color: var(--mainTextColor);
-            font-size: clamp(20px, 2.223vw, 32px);
+            font-size: clamp(20px, 20px + (32 - 20) * ((100vw - 320px) / (1440 - 320)), 32px);
         }
         &.invalid::placeholder {
             color: var(--errorColor);
@@ -37,23 +37,22 @@
     textarea:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
     textarea:-webkit-autofill:focus {
-        -webkit-text-fill-color: var(--mainTextColor);
-        font-size: 26px;
-        -webkit-box-shadow: 0 0 0 1000px var(--mainBackgroundColor) inset;
-        transition: background-color 5000s ease-in-out 0s;
+        -webkit-text-fill-color: var(--mainTextColor) !important;
+        font-size: clamp(20px, 20px + (32 - 20) * ((100vw - 320px) / (1440 - 320)), 32px);
+        -webkit-box-shadow: 0 0 0 1000px var(--mainBackgroundColor) inset !important;
+        transition: background-color 5000s ease-in-out 0s !important;
     }
     button {
         width: fit-content;
         font-weight: 800;
         font-family: inherit;
-        border: none;
+        border: 1px solid transparent;
         color: var(--secondTextColor);
         background-color: var(--mainColor);
-        border: 1px solid transparent;
         transition: color ease 0.3s, background-color ease 0.3s, border ease 0.3s, width 0.3s ease;
-        border-radius: clamp(6px, 0.521vw, 7.5px);
-        font-size: clamp(20px, 2.223vw, 32px);
-        padding: clamp(5px, 0.694vw, 10px) clamp(15px, 1.042vw, 15px);
+        border-radius: clamp(6px, 6px + (7.5 - 6) * ((100vw - 320px) / (1440 - 320)), 7.5px);
+        font-size: clamp(20px, 20px + (32 - 20) * ((100vw - 320px) / (1440 - 320)), 32px);
+        padding: clamp(5px, 5px + (10 - 5) * ((100vw - 320px) / (1440 - 320)), 10px) clamp(15px, 15px + (15 - 15) * ((100vw - 320px) / (1440 - 320)), 15px);
         &:hover,
         &.sending,
         &.success {
