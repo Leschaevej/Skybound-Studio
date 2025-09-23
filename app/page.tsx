@@ -125,7 +125,7 @@ export default function Home() {
                         <p>Nous sommes convaincus que votre entreprise est exceptionnelle...</p>
                         <div className="panel">
                             <address className="details">
-                                <h3>N'hésitez pas</h3>
+                                <h3>N&apos;hésitez pas</h3>
                                 <p><a href="tel:0781076389">07 81 07 63 89</a></p>
                                 <p>leschaeve.jimmy@gmail.com</p>
                                 <p>1 Bis Cour D&apos;orbitelle<br/>Aix en Provence 13100</p>
