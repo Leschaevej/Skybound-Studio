@@ -11,12 +11,14 @@
     justify-content: center;
     align-items: center;
     z-index: 10;
-    gap: clamp(30px, 3.473vw, 50px);
+    gap: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
     transition: transform 1s ease;
+    will-change: transform;
     .logo {
-        height: clamp(150px, 17.361vw, 250px);
+        height: clamp(150px, 150px + (250 - 150) * ((100vw - 320px) / (1440 - 320)), 250px);
         overflow: visible;
         opacity: 0;
+        will-change: opacity;
         path {
             stroke-width: 1;
             stroke: var(--mainTextColor);
@@ -30,13 +32,13 @@
         overflow: visible;
         .placeholder {
             visibility: hidden;
-            font-size: clamp(68px, 6.945vw, 100px);
+            font-size: clamp(36px, 36px + (100 - 36) * ((100vw - 320px) / (1440 - 320)), 100px);
         }
         h2 {
             position: absolute;
             top: 0;
             left: 0;
-            font-size: clamp(68px, 6.945vw, 100px);
+            font-size: clamp(36px, 36px + (100 - 36) * ((100vw - 320px) / (1440 - 320)), 100px);
             white-space: nowrap;
             &::after {
                 content: "|";
@@ -48,6 +50,29 @@
         50% { opacity: 0; }
     }
 }
-.out {
-    transform: translateY(-100%);
+// Respecter les préférences d'accessibilité pour les animations
+@media (prefers-reduced-motion: reduce) {
+    .preloader {
+        transition: none;
+        will-change: auto;
+
+        .logo {
+            will-change: auto;
+        }
+
+        .text h2::after {
+            animation: none;
+        }
+    }
+
+    .out {
+        transform: translateY(-100%);
+        transition: none;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .out {
+        transform: translateY(-100%);
+    }
 }
