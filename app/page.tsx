@@ -52,7 +52,7 @@ export default function Home() {
     }, []);
     useEffect(() => {
         const observerOptions = {
-            threshold: 1.0,
+            threshold: 0.80,
         };
         const handleIntersection = (entries: IntersectionObserverEntry[]) => {
             entries.forEach(entry => {
@@ -157,7 +157,7 @@ export default function Home() {
                         </div>
                         <div>
                             <Strategy className="strategy"/>
-                            <h3>Stratégie digitale</h3>
+                            <h3>Stratégie</h3>
                             <p>Conseils personnalisés pour booster votre présence en ligne.</p>
                         </div>
                     </div>

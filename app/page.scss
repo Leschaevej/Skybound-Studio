@@ -46,6 +46,7 @@ h2:not(.hero h2):not(.preloader h2) {
         p {
             font-weight: 400;
             margin-left: auto;
+            padding-bottom: 30px;
             font-size: clamp(20px, 2.222vw, 32px);
             opacity: 0;
             transform: translateX(-50px);
