@@ -6,7 +6,7 @@ import Logo from '../../../app/assets/logo.svg';
 
 export default function Footer() {
     return (
-        <footer aria-label="Pied de page du site">
+        <footer role="contentinfo" aria-label="Pied de page du site">
             <Logo
                 className="logo"
                 data-testid="footer-logo"
