@@ -46,5 +46,9 @@
         "ts-jest": "^29.4.1",
         "ts-node": "^10.9.2",
         "typescript": "^5"
+    },
+    "overrides": {
+        "glob": "^10.4.5",
+        "inflight": "^1.0.6"
     }
 }
