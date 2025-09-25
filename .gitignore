@@ -15,12 +15,3 @@ logs/
 Thumbs.db
 *.tsbuildinfo
 .sass-cache/
-# Tests generated folders (new location)
-tests/playwright-report/
-tests/test-results/
-tests/coverage/
-
-# Legacy test folders (old location)
-playwright-report
-test-results
-coverage
