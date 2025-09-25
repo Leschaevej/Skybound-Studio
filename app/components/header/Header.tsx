@@ -86,12 +86,10 @@ export default function Header({ onHeightChange }: HeaderProps) {
         <>
             <header
                 ref={headerRef}
-                data-testid="header"
                 className={scrolled ? 'header scrolled' : 'header'} 
             >
                 <div className="brand">
                     <Logo
-                        data-testid="logo"
                         className="logo"
                         onClick={() => scrollToSection(SECTIONS.HERO)}
                     />
@@ -99,7 +97,6 @@ export default function Header({ onHeightChange }: HeaderProps) {
                 </div>
                 <Menu
                     ref={menuBtnRef}
-                    data-testid="menu"
                     className="menu"
                     onClick={() => setMenuOpen(prev => !prev)}
                     aria-label="Menu de navigation"
@@ -108,7 +105,7 @@ export default function Header({ onHeightChange }: HeaderProps) {
                     tabIndex={0}
                 />
             </header>
-            <aside ref={sideRef} data-testid="side" className={`side ${menuOpen ? 'open' : ''}`} {...(!menuOpen && { inert: true })}>
+            <aside ref={sideRef} className={`side ${menuOpen ? 'open' : ''}`} {...(!menuOpen && { inert: true })}>
                 <nav aria-label="Navigation principale">
                     <ul role="list">
                         {navigationItems.map((item) => (

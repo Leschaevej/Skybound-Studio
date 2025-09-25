@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
     devIndicators: false,
     productionBrowserSourceMaps: true,
+    images: {
+        formats: ['image/webp', 'image/avif'],
+        unoptimized: false,
+    },
     headers: async () => {
         return [
             {

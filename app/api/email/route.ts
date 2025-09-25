@@ -22,11 +22,11 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: "Nom invalide" }, { status: 400 });
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!cleanData.email || !emailRegex.test(cleanData.email)) {
+    if (!cleanData.email || !emailRegex.exec(cleanData.email)) {
         return NextResponse.json({ error: "Email invalide" }, { status: 400 });
     }
     const phoneRegex = /^\+?[0-9\s\-]{6,15}$/;
-    if (!cleanData.phone || !phoneRegex.test(cleanData.phone)) {
+    if (!cleanData.phone || !phoneRegex.exec(cleanData.phone)) {
         return NextResponse.json({ error: "Téléphone invalide" }, { status: 400 });
     }
     if (!cleanData.message || cleanData.message.length < 10) {

@@ -36,13 +36,13 @@ const useValidation = (formData: ContactFormData) => {
         }
         // Validation de l'email avec une expression régulière
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!formData.email || !emailRegex.test(formData.email)) {
+        if (!formData.email || !emailRegex.exec(formData.email)) {
             newErrors.email = true;
             isValid = false;
         }
         // Validation du téléphone (6-15 chiffres, espaces et tirets autorisés)
         const phoneRegex = /^\+?[0-9\s\-]{6,15}$/;
-        if (!formData.phone || !phoneRegex.test(formData.phone)) {
+        if (!formData.phone || !phoneRegex.exec(formData.phone)) {
             newErrors.phone = true;
             isValid = false;
         }

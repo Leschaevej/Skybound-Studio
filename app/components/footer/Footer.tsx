@@ -9,7 +9,6 @@ export default function Footer() {
         <footer role="contentinfo" aria-label="Pied de page du site">
             <Logo
                 className="logo"
-                data-testid="footer-logo"
                 aria-label="Logo Skybound Studio"
             />
             <p aria-label="Informations de copyright">
