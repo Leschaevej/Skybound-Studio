@@ -1,10 +1,9 @@
 @use './mixins.scss' as *;
 
-h2:not(.hero h2):not(.preloader h2) {
+h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not(.cookies h2):not(.devis h2):not(.modal h2) {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-
     &.animate {
         opacity: 1;
         transform: translateY(0);
@@ -20,7 +19,7 @@ h2:not(.hero h2):not(.preloader h2) {
     background-size: cover;
     overflow-x: visible;
     overflow-y: hidden;
-    padding-inline: clamp(30px, 3.473vw, 50px);
+    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
     @include backgroundPosition(63% top, 65% top, center top);
     @include flexDirection(column, row, row);
     @include justifyContent(space-around, space-between, space-between);
@@ -32,12 +31,11 @@ h2:not(.hero h2):not(.preloader h2) {
         h2 {
             font-weight: 800;
             text-align: left;
-            font-size: clamp(22px, 3.333vw, 48px);
+            font-size: clamp(22px, 22px + (48 - 22) * ((100vw - 320px) / (1440 - 320)), 48px);
             opacity: 0;
             transform: translateX(-50px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             @include width(80%, 100%, 100%);
-
             &.animate {
                 opacity: 1;
                 transform: translateX(0);
@@ -47,13 +45,12 @@ h2:not(.hero h2):not(.preloader h2) {
             font-weight: 400;
             margin-left: auto;
             padding-bottom: 30px;
-            font-size: clamp(20px, 2.222vw, 32px);
+            font-size: clamp(20px, 20px + (32 - 20) * ((100vw - 320px) / (1440 - 320)), 32px);
             opacity: 0;
             transform: translateX(-50px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             transition-delay: 0.2s;
             @include width(35%, 100%, 100%);
-
             &.animate {
                 opacity: 1;
                 transform: translateX(0);
@@ -82,10 +79,9 @@ h2:not(.hero h2):not(.preloader h2) {
             color: var(--mainColor);
             opacity: 0;
             transition: background-color ease 0.3s, box-shadow ease 0.3s, opacity 0.6s ease-out;
-            border-radius: clamp(7.5px, 1.042vw, 15px);
-            font-size: clamp(22px, 3.333vw, 48px);
-            height: clamp(50px, 6.944vw, 100px);
-
+            border-radius: clamp(7.5px, 7.5px + (15 - 7.5) * ((100vw - 320px) / (1440 - 320)), 15px);
+            font-size: clamp(22px, 22px + (48 - 22) * ((100vw - 320px) / (1440 - 320)), 48px);
+            height: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (1440 - 320)), 100px);
             &.animate-frame {
                 opacity: 1;
             }
@@ -113,17 +109,17 @@ h2:not(.hero h2):not(.preloader h2) {
 .dream{
     max-width: 1440px;
     margin: 0 auto;
-    padding-inline: clamp(30px, 3.473vw, 50px);
+    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
     overflow-x: visible;
     .content{
         display: flex;
         flex-direction: column;
-        gap: clamp(30px, 3.473vw, 50px);
+        gap: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
         overflow-x: visible;
         .worker{
             display: flex;
             align-items: center;
-            gap: clamp(30px, 3.473vw, 50px);
+            gap: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
             overflow-x: visible;
             @include flexDirection(column, row, row);
             &:first-child .wrapper {
@@ -167,7 +163,7 @@ h2:not(.hero h2):not(.preloader h2) {
                 position: relative;
                 aspect-ratio: 4 / 3;
                 overflow: hidden;
-                border-radius: clamp(20px, 3.473vw, 50px);
+                border-radius: clamp(20px, 20px + (50 - 20) * ((100vw - 320px) / (1440 - 320)), 50px);
                 @include width(100%, 50%, 50%);
                 .image {
                     object-fit: cover;
@@ -191,7 +187,7 @@ h2:not(.hero h2):not(.preloader h2) {
 .method{
     max-width: 1440px;
     margin: 0 auto;
-    padding-inline: clamp(30px, 3.473vw, 50px);
+    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
     overflow-x: visible;
     h3 {
         opacity: 0;
@@ -231,15 +227,15 @@ h2:not(.hero h2):not(.preloader h2) {
             text-align: left;
             .radar{
                 color: var(--radarColor);
-                height: clamp(100px, 13.9vw, 200px);
+                height: clamp(100px, 100px + (200 - 100) * ((100vw - 320px) / (1440 - 320)), 200px);
             }
             .fighter{
                 color: var(--fighterColor);
-                height: clamp(100px, 13.9vw, 200px);
+                height: clamp(100px, 100px + (200 - 100) * ((100vw - 320px) / (1440 - 320)), 200px);
             }
             .tower{
                 color: var(--towerColor);
-                height: clamp(100px, 13.9vw, 200px);
+                height: clamp(100px, 100px + (200 - 100) * ((100vw - 320px) / (1440 - 320)), 200px);
             }
         }
     }
@@ -248,7 +244,7 @@ h2:not(.hero h2):not(.preloader h2) {
     max-width: 1440px;
     margin: 0 auto;
     text-align: center;
-    padding-inline: clamp(30px, 3.473vw, 50px);
+    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
     overflow-x: visible;
     svg {
         opacity: 0;
@@ -310,29 +306,29 @@ h2:not(.hero h2):not(.preloader h2) {
     .grid{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: clamp(30px, 3.473vw, 50px);
+        gap: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
         .create{
             color: var(--createColor);
-            height: clamp(50px, 6.945vw, 100px);
+            height: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (1440 - 320)), 100px);
         }
         .refresh{
             color: var(--refreshColor);
-            height: clamp(50px, 6.945vw, 100px);
+            height: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (1440 - 320)), 100px);
         }
         .wrench{
             color: var(--wrenchColor);
-            height: clamp(50px, 6.945vw, 100px);
+            height: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (1440 - 320)), 100px);
         }
         .strategy{
             color: var(--strategyColor);
-            height: clamp(50px, 6.945vw, 100px);
+            height: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (1440 - 320)), 100px);
         }
     }
 }
 .behind{
     max-width: 1440px;
     margin: 0 auto;
-    padding-inline: clamp(30px, 3.473vw, 50px);
+    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
     overflow-x: visible;
     p {
         opacity: 0;
@@ -346,14 +342,14 @@ h2:not(.hero h2):not(.preloader h2) {
     .content{
         display: flex;
         flex-direction: column;
-        gap: clamp(10px, 2.083vw, 30px);
+        gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
     }
 }
 .contact{
     max-width: 1440px;
     margin: 0 auto;
-    padding-inline: clamp(30px, 3.473vw, 50px);
-    padding-bottom: clamp(30px, 3.473vw, 50px);
+    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    padding-bottom: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
     overflow-x: visible;
     .content > p {
         opacity: 0;
@@ -387,11 +383,11 @@ h2:not(.hero h2):not(.preloader h2) {
     .content{
         display: flex;
         flex-direction: column;
-        gap: clamp(30px, 3.473vw, 50px);
+        gap: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
         .panel{ 
             display: flex;
             justify-content: space-between;
-            gap: clamp(30px, 3.473vw, 50px);
+            gap: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
             @include flexDirection(column, column, row);
             @media (max-width: 1439px) {
                 .details {
@@ -404,7 +400,7 @@ h2:not(.hero h2):not(.preloader h2) {
             .details{
                 display: flex;
                 flex-direction: column;
-                gap: clamp(10px, 2.083vw, 30px);
+                gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
             }
         }
     }

@@ -16,7 +16,6 @@ import Header from "./components/header/Header";
 
 export default function Home() {
     const [headerHeight, setHeaderHeight] = useState(0);
-    const [preloaderComplete, setPreloaderComplete] = useState(false);
     const startHeroAnimations = () => {
         const hero = document.querySelector('.hero');
         if (hero) {
@@ -31,25 +30,30 @@ export default function Home() {
             }, 600);
         }
     };
-
     useEffect(() => {
-        if (preloaderComplete) {
-            const timer = setTimeout(startHeroAnimations, 200);
-            return () => clearTimeout(timer);
-        }
-    }, [preloaderComplete]);
+        const timer = setTimeout(startHeroAnimations, 200);
+        return () => clearTimeout(timer);
+    }, []);
     useEffect(() => {
-        const checkPreloader = () => {
-            const preloaderEl = document.querySelector('.preloader');
-            if (!preloaderEl) {
-                setPreloaderComplete(true);
+        const handleSectionNavigation = () => {
+            const targetSection = sessionStorage.getItem('scrollToSection');
+            if (targetSection && headerHeight > 0) {
+                sessionStorage.removeItem('scrollToSection');
+                window.scrollTo({ top: 0, behavior: 'auto' });
+                setTimeout(() => {
+                    const element = document.getElementById(targetSection);
+                    if (element) {
+                        const y = element.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                }, 150);
             }
         };
-        const observer = new MutationObserver(checkPreloader);
-        observer.observe(document.body, { childList: true, subtree: true });
-        checkPreloader();
-        return () => observer.disconnect();
-    }, []);
+        if (headerHeight > 0) {
+            const timer = setTimeout(handleSectionNavigation, 500);
+            return () => clearTimeout(timer);
+        }
+    }, [headerHeight]);
     useEffect(() => {
         const observerOptions = {
             threshold: 0.80,

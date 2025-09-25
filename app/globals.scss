@@ -60,13 +60,16 @@ main{
 }
 h2 {
     text-align: center;
-    padding-block: clamp(30px, 3.473vw, 50px);
-    font-size: clamp(26px, 4.723vw, 68px);
+    padding-block: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    font-size: clamp(26px, 26px + (68 - 26) * ((100vw - 320px) / (1440 - 320)), 68px);
 }
 h3 {
     margin: 10px 0;
-    font-size: clamp(24px, 3.334vw, 48px);
+    font-size: clamp(24px, 24px + (48 - 24) * ((100vw - 320px) / (1440 - 320)), 48px);
 }
-p, figcaption {
-    font-size: clamp(20px, 2.223vw, 32px);
+h4{
+    font-size: clamp(20px, 20px + (40 - 20) * ((100vw - 320px) / (1440 - 320)), 40px);
+}
+p, figcaption, li {
+    font-size: clamp(20px, 20px + (32 - 20) * ((100vw - 320px) / (1440 - 320)), 32px);
 }

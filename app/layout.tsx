@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next';
 import Intro from './components/preloader/Preloader';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import Cookies from './components/cookies/Cookies';
 import './globals.scss';
 import { robotoCondensed } from './font';
 
@@ -195,15 +196,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
                 <link rel="dns-prefetch" href="https://vercel.live" />
                 <link rel="dns-prefetch" href="https://vitals.vercel-analytics.com" />
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             </head>
             <body className={robotoCondensed.className}>
-                <Intro />
-                <Header />
-                <main>{children}</main>
-                <Footer />
+                <Intro>
+                    <Header />
+                    <main>{children}</main>
+                    <Footer />
+                </Intro>
+                <Cookies />
                 <Analytics debug={false} />
                 <SpeedInsights debug={false} />
             </body>

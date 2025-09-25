@@ -1,0 +1,164 @@
+@use '../../mixins.scss' as *;
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 30px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    .modal {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--mainBackgroundColor);
+        border-radius: 30px;
+        max-width: 600px;
+        width: 100%;
+        max-height: 80vh;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        padding: clamp(20px, 20px + (30 - 20) * ((100vw - 320px) / (1440 - 320)), 30px);
+        gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
+        transform: translateX(0);
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        &.entering {
+            transform: translateX(120%);
+        }
+        &.exiting {
+            transform: translateX(120%);
+        }
+        .header {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+            h2 {
+                padding: 0;
+                opacity: 1;
+                font-size: clamp(20px, 20px + (24 - 20) * ((100vw - 320px) / (1440 - 320)), 24px);
+                color: var(--mainTextColor);
+                transform: translateX(0);
+            }
+            p{
+                font-size: clamp(16px, 16px + (20 - 16) * ((100vw - 320px) / (1440 - 320)), 20px);
+                color: var(--mainTextColor);
+            }
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
+            .cookie {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                border: 3px solid var(--mainColor);
+                color: var(--mainTextColor);
+                padding: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
+                .top {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    h3 {
+                        font-size: clamp(18px, 18px + (20 - 18) * ((100vw - 320px) / (1440 - 320)), 20px);
+                        margin: 0;
+                    }
+                    .switch {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        .text {
+                            min-width: 70px;
+                            text-align: left;
+                        }
+                        .toggle {
+                            width: 50px;
+                            height: 30px;
+                            background-color: var(--backgroundColor);
+                            border-radius: 15px;
+                            position: relative;
+                            cursor: pointer;
+                            border: 3px solid var(--mainColor);
+                            transition: background-color 0.2s ease-in-out;
+                            &.enabled {
+                                background-color: var(--backgroundColor);
+                                .dot {
+                                    transform: translateX(20px);
+                                    background-color: var(--mainColor);
+                                }
+                            }
+                            .dot {
+                                width: 20px;
+                                height: 20px;
+                                background-color: var(--mainColor);
+                                border-radius: 50%;
+                                position: absolute;
+                                top: 2px;
+                                left: 2px;
+                                transition: transform 0.2s ease-in-out;
+                            }
+                        }
+                    }
+                }
+                p {
+                    font-size: 16px;
+                }
+            }
+        }
+        .actions {
+            display: flex;
+            gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
+            @include flexDirection (column, row, row);
+            button {
+                font-family: var(--font-roboto-condensed);
+                font-size: clamp(16px, 16px + (20 - 16) * ((100vw - 320px) / (1440 - 320)), 20px);
+                padding: 12px 20px;
+                border: 2px solid;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                flex: 1;
+                &.accept {
+                    background-color: var(--mainColor);
+                    border-color: var(--mainColor);
+                    color: var(--mainBackgroundColor);
+                    &:hover {
+                        color: var(--mainColor);
+                        background-color: var(--mainBackgroundColor);
+                        border-color: var(--mainColor);
+                    }
+                }
+                &.minimum {
+                    background-color: var(--backgroundColor);
+                    border-color: var(--mainColor);
+                    color: var(--mainColor);
+                    &:hover {
+                        color: var(--mainBackgroundColor);
+                        background-color: var(--mainColor);
+                    }
+                }
+                &.manage {
+                    background-color: var(--backgroundColor);
+                    border-color: var(--mainColor);
+                    color: var(--mainColor);
+                    &:hover {
+                        color: var(--mainBackgroundColor);
+                        background-color: var(--mainColor);
+                    }
+                }
+                &.save {
+                    background-color: var(--mainColor);
+                    border-color: var(--mainColor);
+                    color: white;
+                    &:hover {
+                        background-color: var(--secondColor);
+                        border-color: var(--secondColor);
+                    }
+                }
+            }
+        }
+    }
+}
+

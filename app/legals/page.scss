@@ -1,0 +1,20 @@
+.legals, .confidentiality, .cookies, .devis {
+    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.cookie-icon {
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    font-size: 100px !important;
+    line-height: 1;
+    color: var(--mainColor);
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+    &:hover {
+        color: var(--secondColor);
+    }
+}

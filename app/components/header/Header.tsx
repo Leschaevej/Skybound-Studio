@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import "./Header.scss";
 import { robotoSerif } from '../../font';
 import Logo from '../../../app/assets/logo.svg';
@@ -18,6 +19,8 @@ type SectionId = typeof SECTIONS[keyof typeof SECTIONS];
 export default function Header({ onHeightChange }: HeaderProps) {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const router = useRouter();
+    const pathname = usePathname();
     const sideRef = useRef<HTMLDivElement>(null);
     const menuBtnRef = useRef<SVGSVGElement>(null);
     const headerRef = useRef<HTMLElement>(null);
@@ -34,12 +37,25 @@ export default function Header({ onHeightChange }: HeaderProps) {
         window.addEventListener('scroll', handleScrollCloseMenu);
         return () => window.removeEventListener('scroll', handleScrollCloseMenu);
     }, [menuOpen]);
-    const scrollToSection = (id: SectionId) => {
-        const element = document.getElementById(id);
-        if (element && headerRef.current) {
-            const headerHeight = headerRef.current.getBoundingClientRect().height;
-            const y = element.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-            window.scrollTo({ top: y, behavior: 'smooth' });
+    const navigateToSection = (id: SectionId) => {
+        const isOnHomePage = pathname === '/';
+        if (isOnHomePage) {
+            const element = document.getElementById(id);
+            if (element && headerRef.current) {
+                const headerHeight = headerRef.current.getBoundingClientRect().height;
+                const y = element.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        } else {
+            sessionStorage.setItem('scrollToSection', id);
+            router.push('/');
+        }
+    };
+    const handleLogoClick = () => {
+        if (pathname === '/') {
+            navigateToSection(SECTIONS.HERO);
+        } else {
+            router.push('/');
         }
     };
     useEffect(() => {
@@ -79,7 +95,7 @@ export default function Header({ onHeightChange }: HeaderProps) {
         { id: SECTIONS.CONTACT, label: 'Contact' }
     ];
     const handleNavClick = (sectionId: SectionId) => {
-        scrollToSection(sectionId);
+        navigateToSection(sectionId);
         setMenuOpen(false);
     };
     return (
@@ -91,7 +107,9 @@ export default function Header({ onHeightChange }: HeaderProps) {
                 <div className="brand">
                     <Logo
                         className="logo"
-                        onClick={() => scrollToSection(SECTIONS.HERO)}
+                        onClick={handleLogoClick}
+                        style={{ cursor: 'pointer' }}
+                        aria-label="Retour à l'accueil"
                     />
                     <h1 className={robotoSerif.className}>Skybound Studio</h1>
                 </div>

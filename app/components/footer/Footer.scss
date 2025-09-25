@@ -9,8 +9,22 @@ footer{
     color: var(--mainTextColor);
     border-top: 3px solid var(--mainColor);
     padding: clamp(20px, 20px + (30 - 20) * ((100vw - 320px) / (1440 - 320)), 30px) clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-    .logo {
-        height: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    .brand{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .logo {
+            height: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+        }
+        .legal{
+            color: var(--mainTextColor);
+            text-decoration: none;
+            font-size: clamp(16px, 16px + (22 - 16) * ((100vw - 320px) / (1440 - 320)), 22px);
+            transition: color 0.3s ease;
+            &:hover {
+                color: var(--mainColor);
+            }
+        }
     }
     p{
         display: flex;
