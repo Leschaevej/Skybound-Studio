@@ -82,7 +82,7 @@
                             position: relative;
                             cursor: pointer;
                             border: 3px solid var(--mainColor);
-                            transition: background-color 0.2s ease-in-out;
+                            transition: background-color 0.3s ease-in-out;
                             &.enabled {
                                 background-color: var(--backgroundColor);
                                 .dot {
@@ -98,7 +98,7 @@
                                 position: absolute;
                                 top: 2px;
                                 left: 2px;
-                                transition: transform 0.2s ease-in-out;
+                                transition: transform 0.3s ease-in-out;
                             }
                         }
                     }

@@ -13,7 +13,7 @@
     line-height: 1;
     color: var(--mainColor);
     cursor: pointer;
-    transition: color 0.3s ease, transform 0.2s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
     &:hover {
         color: var(--secondColor);
     }
