@@ -48,8 +48,7 @@ export async function POST(req: Request) {
             text: `Nom: ${cleanData.name}\nEmail: ${cleanData.email}\nTéléphone: ${cleanData.phone}\n\nMessage:\n${cleanData.message}`,
         });
         return NextResponse.json({ message: "Message envoyé" });
-    } catch (error) {
-        console.error('Email sending failed:', process.env.NODE_ENV === 'development' ? error : 'Internal server error');
+    } catch {
         return NextResponse.json({ error: "Erreur lors de l'envoi" }, { status: 500 });
     }
 }

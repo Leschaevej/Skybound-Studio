@@ -7,41 +7,31 @@ import "./page.scss";
 export default function Legals() {
     const [headerHeight, setHeaderHeight] = useState(0);
     const cookieIconRef = useRef<HTMLSpanElement>(null);
-
     const handleCookieSettings = () => {
         window.dispatchEvent(new CustomEvent('openCookieModal', { detail: { mode: 'manage' } }));
     };
-
     useEffect(() => {
         const getResponsiveValue = () => {
             const vw = window.innerWidth;
             return Math.min(50, Math.max(30, 30 + (50 - 30) * ((vw - 320) / (1440 - 320))));
         };
-
         const handleScroll = () => {
             const footer = document.querySelector('footer');
             const cookieIcon = cookieIconRef.current;
-
             if (!footer || !cookieIcon) return;
-
             const footerRect = footer.getBoundingClientRect();
             const windowHeight = window.innerHeight;
             const responsiveBottom = getResponsiveValue();
-
             if (footerRect.top <= windowHeight) {
-                // Le footer est visible, ajuster la position
                 const newBottom = windowHeight - footerRect.top + responsiveBottom;
                 cookieIcon.style.bottom = `${newBottom}px`;
             } else {
-                // Le footer n'est pas visible, position normale (laisser le CSS gérer)
                 cookieIcon.style.bottom = '';
             }
         };
-
         window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleScroll); // Aussi sur resize
-        handleScroll(); // Appel initial
-
+        window.addEventListener('resize', handleScroll);
+        handleScroll();
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleScroll);

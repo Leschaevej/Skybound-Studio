@@ -54,8 +54,7 @@ export default function Cookies() {
                         analytics: savedPreferences.analytics || false
                     });
                 }
-            } catch (error) {
-                console.error('Erreur parsing localStorage:', error);
+            } catch {
                 localStorage.removeItem('cookieConsent');
                 if (!hasVisited) {
                     setTimeout(() => showModalWithAnimation(), 1500);
