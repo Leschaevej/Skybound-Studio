@@ -4,13 +4,14 @@
     flex-direction: column;
     gap: 30px;
 }
-.cookie-icon {
-    display: block;
-    width: 100%;
-    text-align: right;
-    padding: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-    font-size: 100px !important;
-    line-height: 1;
+.devis{
+    padding-bottom: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+
+}
+.icon {
+    position: fixed;
+    bottom: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    right: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
     color: var(--mainColor);
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
