@@ -4,8 +4,8 @@
   "description": "Agence de développement web créative, spécialisée dans les sites modernes et sur mesure.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1F2024",
-  "theme_color": "#1F2024",
+  "background_color": "#1A1A1A",
+  "theme_color": "#1A1A1A",
   "orientation": "portrait",
   "icons": [
     {
