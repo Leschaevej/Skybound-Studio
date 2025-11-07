@@ -16,6 +16,8 @@ interface BusinessInfo {
     country: string;
     phone: string;
     twitter: string;
+    facebook: string;
+    instagram: string;
 }
 interface SiteConfig {
     url: string;
@@ -36,7 +38,9 @@ const BUSINESS_INFO: BusinessInfo = {
     postalCode: '13100',
     country: 'FR',
     phone: '+33 7 81 07 63 89',
-    twitter: '@Fre3DoMind',
+    twitter: '@Skybound_Studio',
+    facebook: 'https://www.facebook.com/profile.php?id=61583485317456',
+    instagram: 'https://www.instagram.com/skybound_studio/',
 };
 export const metadataBase = new URL(SITE_CONFIG.url);
 export const metadata: Metadata = {
@@ -81,6 +85,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         site: BUSINESS_INFO.twitter,
+        creator: BUSINESS_INFO.twitter,
         title: SITE_CONFIG.title,
         description: SITE_CONFIG.description,
         images: [`${SITE_CONFIG.url}/social.png`],
@@ -111,7 +116,11 @@ const businessSchema = {
     telephone: BUSINESS_INFO.phone,
     url: SITE_CONFIG.url,
     email: 'contact@skyboundstudio.fr',
-    sameAs: [`https://twitter.com/${BUSINESS_INFO.twitter.replace('@', '')}`],
+    sameAs: [
+        `https://twitter.com/${BUSINESS_INFO.twitter.replace('@', '')}`,
+        BUSINESS_INFO.facebook,
+        BUSINESS_INFO.instagram,
+    ],
     serviceArea: {
         '@type': 'GeoCircle',
         geoMidpoint: {
@@ -122,7 +131,7 @@ const businessSchema = {
         geoRadius: '500000',
     },
     priceRange: '€€',
-    openingHours: ['Mo-Fr 09:00-18:00'],
+    openingHours: ['Mo-Fr 08:00-20:00'],
     hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Services de développement web',

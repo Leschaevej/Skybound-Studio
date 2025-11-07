@@ -401,6 +401,19 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
                 display: flex;
                 flex-direction: column;
                 gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
+                .social{
+                    display: flex;
+                    gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
+                    img{
+                        height: clamp(36px, calc(36px + 24 * (100vw - 320px) / 1120), 60px);
+                        width: auto;
+                        transition: transform 0.3s ease;
+                        cursor: pointer;
+                        &:hover{
+                            transform: scale(1.2);
+                        }
+                    }
+                }
             }
         }
     }

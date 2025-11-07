@@ -183,8 +183,19 @@ export default function Home() {
                             <address className="details">
                                 <h3>N&apos;hésitez pas</h3>
                                 <p><a href="tel:0781076389">07 81 07 63 89</a></p>
-                                <p>leschaeve.jimmy@gmail.com</p>
+                                <p>contact@skyboundstudio.fr</p>
                                 <p>1 Bis Cour D&apos;orbitelle<br/>Aix en Provence 13100</p>
+                                <div className="social">
+                                    <a href="https://www.facebook.com/profile.php?id=61583485317456" target="_blank" rel="noopener noreferrer">
+                                        <img src="/facebook.webp" alt="Facebook" />
+                                    </a>
+                                    <a href="https://www.instagram.com/skybound_studio/?next=%2F" target="_blank" rel="noopener noreferrer">
+                                        <img src="/instagram.webp" alt="Instagram" />
+                                    </a>
+                                    <a href="https://x.com/Skybound_Studio" target="_blank" rel="noopener noreferrer">
+                                        <img src="/x.webp" alt="X" />
+                                    </a>
+                                </div>
                             </address>
                             <Contact />
                         </div>

@@ -33,22 +33,36 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: "Message trop court" }, { status: 400 });
     }
     const transporter = nodemailer.createTransport({
-        service: "gmail",
+        host: 'ssl0.ovh.net',
+        port: 465,
+        secure: true,
         auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASSWORD,
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASSWORD,
         },
     });
     try {
-        await transporter.sendMail({
+        const mailOptions = {
             from: process.env.MAIL_USER,
             to: process.env.MAIL_USER,
             replyTo: cleanData.email,
             subject: `Nouveau message de ${cleanData.name}`,
-            text: `Nom: ${cleanData.name}\nEmail: ${cleanData.email}\nTéléphone: ${cleanData.phone}\n\nMessage:\n${cleanData.message}`,
-        });
-        return NextResponse.json({ message: "Message envoyé" });
-    } catch {
-        return NextResponse.json({ error: "Erreur lors de l'envoi" }, { status: 500 });
+            html: `
+                <h3>Nouveau message depuis le site web</h3>
+                <p><strong>Nom:</strong> ${cleanData.name}</p>
+                <p><strong>Email:</strong> ${cleanData.email}</p>
+                <p><strong>Téléphone:</strong> ${cleanData.phone}</p>
+                <p><strong>Message:</strong></p>
+                <p>${cleanData.message}</p>
+            `,
+        };
+        await transporter.sendMail(mailOptions);
+        return NextResponse.json({ success: true, message: "Email envoyé avec succès" });
+    } catch (error) {
+        console.error('Erreur envoi email:', error);
+        return NextResponse.json(
+            { success: false, message: "Erreur lors de l'envoi de l'email" },
+            { status: 500 }
+        );
     }
 }
