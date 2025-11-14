@@ -8,6 +8,10 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: [
         '/api/',
+        '/_next/',
+        '/admin/',
+        '/favicon.ico',
+        '/site.webmanifest',
       ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,

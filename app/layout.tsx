@@ -67,7 +67,18 @@ export const metadata: Metadata = {
         'site professionnel'
     ],
     authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
-    robots: { index: true, follow: true, nocache: false },
+    robots: {
+        index: true,
+        follow: true,
+        nocache: false,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
     openGraph: {
         type: 'website',
         locale: 'fr_FR',

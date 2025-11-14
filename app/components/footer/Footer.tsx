@@ -13,7 +13,7 @@ export default function Footer() {
                     className="logo"
                     aria-label="Logo Skybound Studio"
                 />
-                <Link href="/legals" className="legal">
+                <Link href="/legal" className="legal">
                     Légales
                 </Link>
             </div>
