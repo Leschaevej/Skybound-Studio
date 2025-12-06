@@ -7,3 +7,4 @@ npm start
 ## .env
 MAIL_USER=
 MAIL_PASSWORD=
+URL=
