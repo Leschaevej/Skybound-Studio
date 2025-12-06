@@ -42,38 +42,13 @@ const nextConfig: NextConfig = {
             },
         ];
     },
-    webpack(config) {
-        const fileLoaderRule = config.module.rules.find(
-        (rule: any) => rule.test instanceof RegExp && rule.test.test(".svg")
-        );
-        if (fileLoaderRule) {
-        fileLoaderRule.exclude = /\.svg$/i;
-        }
-        config.module.rules.push({
-        test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
-        use: [
-            {
-            loader: "@svgr/webpack",
-            options: {
-                svgo: true,
-                svgoConfig: {
-                plugins: [
-                    {
-                    name: "preset-default",
-                    params: {
-                        overrides: {
-                        mergePaths: false,
-                        },
-                    },
-                    },
-                ],
-                },
+    turbopack: {
+        rules: {
+            '*.svg': {
+                loaders: ['@svgr/webpack'],
+                as: '*.js',
             },
-            },
-        ],
-        });
-        return config;
+        },
     },
 };
 
