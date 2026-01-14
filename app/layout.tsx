@@ -87,7 +87,7 @@ export const metadata: Metadata = {
         title: SITE_CONFIG.title,
         description: SITE_CONFIG.description,
         images: [{
-            url: `${SITE_CONFIG.url}/social.png`,
+            url: `${SITE_CONFIG.url}/social.webp`,
             width: 1200,
             height: 630,
             alt: SITE_CONFIG.name,
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
         creator: BUSINESS_INFO.twitter,
         title: SITE_CONFIG.title,
         description: SITE_CONFIG.description,
-        images: [`${SITE_CONFIG.url}/social.png`],
+        images: [`${SITE_CONFIG.url}/social.webp`],
     },
     alternates: {
         canonical: SITE_CONFIG.url,
@@ -115,7 +115,7 @@ const businessSchema = {
     '@type': ['LocalBusiness', 'WebDesignService'],
     '@id': `${SITE_CONFIG.url}#business`,
     name: BUSINESS_INFO.name,
-    image: `${SITE_CONFIG.url}/social.png`,
+    image: `${SITE_CONFIG.url}/social.webp`,
     description: SITE_CONFIG.description,
     address: {
         '@type': 'PostalAddress',
@@ -139,7 +139,7 @@ const businessSchema = {
             latitude: 43.5297,
             longitude: 5.4474,
         },
-        geoRadius: '500000',
+        geoRadius: '50000',
     },
     priceRange: '€€',
     openingHours: ['Mo-Fr 08:00-20:00'],
@@ -211,7 +211,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <meta name="geo.placename" content="Aix-en-Provence" />
                 <meta name="geo.position" content="43.5297;5.4474" />
                 <link rel="icon" href="/favicon.ico" sizes="any" />
-                <link rel="apple-touch-icon" href="/apple.png" />
+                <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
                 <link rel="manifest" href="/site.webmanifest" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
                 <link rel="dns-prefetch" href="https://vercel.live" />
