@@ -1,45 +1,43 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import "./Header.scss";
 import { robotoSerif } from '../../font';
 import Logo from '../../../app/assets/logo.svg';
-import Menu from '../../../app/assets/menu.svg';
 
 interface HeaderProps {
-  onHeightChange?: (height: number) => void;
+    onHeightChange?: (height: number) => void;
 }
-const SECTIONS = {
-  HERO: 'hero',
-  SERVICES: 'services',
-  CONTACT: 'contact'
-} as const;
-type SectionId = typeof SECTIONS[keyof typeof SECTIONS];
+
+const NAV_LINKS = [
+    { id: 'hero', label: 'Accueil' },
+    { id: 'services', label: 'Services' },
+    { id: 'contact', label: 'Contact' },
+];
+
 export default function Header({ onHeightChange }: HeaderProps) {
     const [scrolled, setScrolled] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
-    const router = useRouter();
+    const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
-    const sideRef = useRef<HTMLDivElement>(null);
-    const menuBtnRef = useRef<SVGSVGElement>(null);
+    const router = useRouter();
     const headerRef = useRef<HTMLElement>(null);
+
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 0);
         window.addEventListener('scroll', handleScroll);
         handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
     useEffect(() => {
-        const handleScrollCloseMenu = () => {
-            if (menuOpen) setMenuOpen(false);
-        };
-        window.addEventListener('scroll', handleScrollCloseMenu);
-        return () => window.removeEventListener('scroll', handleScrollCloseMenu);
-    }, [menuOpen]);
-    const navigateToSection = (id: SectionId) => {
-        const isOnHomePage = pathname === '/';
-        if (isOnHomePage) {
+        if (headerRef.current && onHeightChange) {
+            onHeightChange(headerRef.current.getBoundingClientRect().height);
+        }
+    }, [onHeightChange]);
+
+    const navigateToSection = (id: string) => {
+        if (pathname === '/') {
             const element = document.getElementById(id);
             if (element && headerRef.current) {
                 const headerHeight = headerRef.current.getBoundingClientRect().height;
@@ -50,60 +48,20 @@ export default function Header({ onHeightChange }: HeaderProps) {
             sessionStorage.setItem('scrollToSection', id);
             router.push('/');
         }
+        setIsOpen(false);
     };
+
     const handleLogoClick = () => {
         if (pathname === '/') {
-            navigateToSection(SECTIONS.HERO);
+            navigateToSection('hero');
         } else {
             router.push('/');
         }
     };
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (
-                menuOpen &&
-                sideRef.current &&
-                !sideRef.current.contains(event.target as Node) &&
-                menuBtnRef.current &&
-                !menuBtnRef.current.contains(event.target as Node)
-            ) {
-                setMenuOpen(false);
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [menuOpen]);
-    useEffect(() => {
-        const updateHeaderDimensions = () => {
-            if (headerRef.current) {
-                const headerHeight = headerRef.current.getBoundingClientRect().height;
-                if (sideRef.current) {
-                    sideRef.current.style.top = `${headerHeight + 10}px`;
-                }
-                if (onHeightChange) {
-                    onHeightChange(headerHeight);
-                }
-            }
-        };
-        updateHeaderDimensions();
-        window.addEventListener('resize', updateHeaderDimensions);
-        return () => window.removeEventListener('resize', updateHeaderDimensions);
-    }, [onHeightChange]);
-    const navigationItems = [
-        { id: SECTIONS.HERO, label: 'Accueil' },
-        { id: SECTIONS.SERVICES, label: 'Services' },
-        { id: SECTIONS.CONTACT, label: 'Contact' }
-    ];
-    const handleNavClick = (sectionId: SectionId) => {
-        navigateToSection(sectionId);
-        setMenuOpen(false);
-    };
+
     return (
         <>
-            <header
-                ref={headerRef}
-                className={scrolled ? 'header scrolled' : 'header'} 
-            >
+            <header ref={headerRef} className={scrolled ? 'scrolled' : ''}>
                 <div className="brand">
                     <Logo
                         className="logo"
@@ -113,33 +71,20 @@ export default function Header({ onHeightChange }: HeaderProps) {
                     />
                     <h1 className={robotoSerif.className}>Skybound Studio</h1>
                 </div>
-                <Menu
-                    ref={menuBtnRef}
-                    className="menu"
-                    onClick={() => setMenuOpen(prev => !prev)}
-                    aria-label="Menu de navigation"
-                    aria-expanded={menuOpen}
-                    role="button"
-                    tabIndex={0}
-                />
-            </header>
-            <aside ref={sideRef} className={`side ${menuOpen ? 'open' : ''}`} {...(!menuOpen && { inert: true })}>
-                <nav aria-label="Navigation principale">
-                    <ul role="list">
-                        {navigationItems.map((item) => (
-                            <li key={item.id}>
-                                <a
-                                    href={`#${item.id}`}
-                                    onClick={(e) => { e.preventDefault(); handleNavClick(item.id); }}
-                                >
-                                    {item.label}
+                <div className={`menu ${isOpen ? 'open' : ''}`}>
+                    <button onClick={() => setIsOpen(!isOpen)}>MENU</button>
+                    <nav>
+                        <div className="inner">
+                            {NAV_LINKS.map(({ id, label }) => (
+                                <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); navigateToSection(id); }}>
+                                    {label}
                                 </a>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
-            </aside>
-            {menuOpen && <div className="overlay"></div>}
+                            ))}
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            {isOpen && <div className="backdrop" onClick={() => setIsOpen(false)} />}
         </>
     );
 }

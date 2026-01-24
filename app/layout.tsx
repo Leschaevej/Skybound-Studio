@@ -213,7 +213,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <link rel="icon" href="/favicon.ico" sizes="any" />
                 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
                 <link rel="manifest" href="/site.webmanifest" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
                 <link rel="dns-prefetch" href="https://vercel.live" />
                 <link rel="dns-prefetch" href="https://vitals.vercel-analytics.com" />
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -224,12 +223,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <body className={robotoCondensed.className}>
                 <Intro>
                     <Header />
-                    <main>{children}</main>
+                    {children}
                     <Footer />
                 </Intro>
                 <Cookies />
-                <Analytics debug={false} />
-                <SpeedInsights debug={false} />
+                <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     );
