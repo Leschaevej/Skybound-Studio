@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, ReactNode } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./Preloader.scss";
 import Logo from '../../assets/logo.svg';
 
@@ -28,10 +28,7 @@ function useTimeout(callback: () => void, delay: number | null) {
         return () => clearTimeout(id);
     }, [delay]);
 }
-interface PreloaderProps {
-    children: ReactNode;
-}
-export default function Preloader({ children }: PreloaderProps) {
+export default function Preloader() {
     const [visible, setVisible] = useState(true);
     const [animateOut, setAnimateOut] = useState(false);
     const [textIndex, setTextIndex] = useState(0);
@@ -98,29 +95,26 @@ export default function Preloader({ children }: PreloaderProps) {
         },
         animateOut ? ANIMATION_DURATIONS.slide : null
     );
+    if (!visible) return null;
+
     return (
-        <>
-            {visible && (
-                <div
-                    className={`preloader ${animateOut ? "out" : ""}`}
-                    role="status"
-                    aria-live="polite"
-                    aria-label="Page loading"
-                >
-                    <Logo
-                        ref={logoRef}
-                        className="logo"
-                        aria-hidden="true"
-                    />
-                    <div className="text" style={{ opacity: logoDrawn ? 1 : 0 }}>
-                        <span className="placeholder" aria-hidden="true">{text}</span>
-                        <h2 aria-label={`Loading: ${text.slice(0, textIndex)}`}>
-                            {text.slice(0, textIndex)}
-                        </h2>
-                    </div>
-                </div>
-            )}
-            {children}
-        </>
+        <div
+            className={`preloader ${animateOut ? "out" : ""}`}
+            role="status"
+            aria-live="polite"
+            aria-label="Page loading"
+        >
+            <Logo
+                ref={logoRef}
+                className="logo"
+                aria-hidden="true"
+            />
+            <div className="text" style={{ opacity: logoDrawn ? 1 : 0 }}>
+                <span className="placeholder" aria-hidden="true">{text}</span>
+                <h2 aria-label={`Loading: ${text.slice(0, textIndex)}`}>
+                    {text.slice(0, textIndex)}
+                </h2>
+            </div>
+        </div>
     );
 }

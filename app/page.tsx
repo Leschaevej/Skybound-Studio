@@ -15,16 +15,6 @@ import Wrench from './assets/wrench.svg';
 
 export default function Home() {
     useEffect(() => {
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            const buttons = hero.querySelectorAll('button');
-            buttons.forEach(btn => btn.classList.add('animate-frame'));
-            setTimeout(() => {
-                buttons.forEach(btn => btn.classList.add('animate-text'));
-            }, 600);
-        }
-    }, []);
-    useEffect(() => {
         const scrollTarget = sessionStorage.getItem('scrollTarget');
         if (scrollTarget) {
             sessionStorage.removeItem('scrollTarget');

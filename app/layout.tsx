@@ -224,11 +224,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             </head>
             <body className={robotoCondensed.className}>
-                <Intro>
-                    <Header />
-                    {children}
-                    <Footer />
-                </Intro>
+                <Intro />
+                <Header />
+                {children}
+                <Footer />
                 <Cookies />
                 <Analytics />
                 <SpeedInsights />
