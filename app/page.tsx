@@ -14,22 +14,15 @@ import Strategy from './assets/strategy.svg';
 import Wrench from './assets/wrench.svg';
 
 export default function Home() {
-    const startHeroAnimations = () => {
+    useEffect(() => {
         const hero = document.querySelector('.hero');
         if (hero) {
-            const h2 = hero.querySelector('h2');
-            const p = hero.querySelector('p');
             const buttons = hero.querySelectorAll('button');
-            h2?.classList.add('animate');
-            p?.classList.add('animate');
             buttons.forEach(btn => btn.classList.add('animate-frame'));
             setTimeout(() => {
                 buttons.forEach(btn => btn.classList.add('animate-text'));
             }, 600);
         }
-    };
-    useEffect(() => {
-        startHeroAnimations();
     }, []);
     useEffect(() => {
         const scrollTarget = sessionStorage.getItem('scrollTarget');

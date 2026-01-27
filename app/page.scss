@@ -42,14 +42,18 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
             font-weight: 800;
             text-align: left;
             font-size: fluid(22, 48);
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             width: 100%;
+            animation: slideInFromLeft 0.8s ease-out forwards;
             @media (max-width: 767px) {
                 width: 80%;
             }
-            &.animate {
+        }
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
                 opacity: 1;
                 transform: translateX(0);
             }
@@ -59,17 +63,11 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
             margin-left: auto;
             padding-bottom: 30px;
             font-size: fluid(20, 32);
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            transition-delay: 0.2s;
             width: 100%;
+            animation: slideInFromLeft 0.8s ease-out 0.2s forwards;
+            opacity: 0;
             @media (max-width: 767px) {
                 width: 35%;
-            }
-            &.animate {
-                opacity: 1;
-                transform: translateX(0);
             }
         }
     }
