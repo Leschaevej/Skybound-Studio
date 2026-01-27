@@ -35,6 +35,13 @@ body {
 main{
     color: var(--mainTextColor);
 }
+h1 {
+    color: var(--mainTextColor);
+    font-weight: 700;
+    font-size: fluid(16, 40);
+    line-height: 1;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.4);
+}
 h2 {
     text-align: center;
     padding-block: fluid(30, 50);

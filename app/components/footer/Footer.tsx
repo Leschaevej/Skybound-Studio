@@ -18,7 +18,7 @@ export default function Footer() {
                 </Link>
             </div>
             <p aria-label="Informations de copyright">
-                <span className="copy">© 2026 by </span>
+                <span className="copy">© 2026 by</span>
                 <span className={`${robotoSerif.className} brand`}>Skybound Studio</span>
             </p>
         </footer>

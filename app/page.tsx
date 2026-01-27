@@ -33,6 +33,18 @@ export default function Home() {
         return () => clearTimeout(timer);
     }, []);
     useEffect(() => {
+        const scrollTarget = sessionStorage.getItem('scrollTarget');
+        if (scrollTarget) {
+            sessionStorage.removeItem('scrollTarget');
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            if (scrollTarget !== 'hero') {
+                setTimeout(() => {
+                    document.getElementById(scrollTarget)?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
+    }, []);
+    useEffect(() => {
         const observerOptions = {
             threshold: 0.80,
         };

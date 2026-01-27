@@ -8,13 +8,13 @@ footer {
     background-color: var(--footerColor);
     color: var(--mainTextColor);
     border-top: 3px solid var(--mainColor);
-    padding: fluid(20, 30) fluid(30, 50);
+    padding: fluid(10, 30) fluid(30, 50);
     .brand {
         display: flex;
         align-items: center;
         gap: 20px;
         .logo {
-            height: fluid(30, 50);
+            height: fluid(29, 48);
         }
         .legal {
             color: var(--mainTextColor);
@@ -36,10 +36,11 @@ footer {
             flex-direction: column;
         }
         .copy {
-            font-size: fluid(16, 32);
+            font-size: fluid(16, 28);
         }
         .brand {
-            font-size: fluid(20, 48);
+            font-size: fluid(16, 40);
+            line-height: 1;
         }
     }
 }

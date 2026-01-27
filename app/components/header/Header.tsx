@@ -19,6 +19,19 @@ export default function Header() {
         if (pathname === '/') {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            sessionStorage.setItem('scrollTarget', 'hero');
+        }
+    };
+    const handleNavClick = (e: React.MouseEvent, id: string) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsOpen(false);
+        if (pathname === '/') {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            sessionStorage.setItem('scrollTarget', id);
+            window.location.href = '/';
         }
     };
     return (
@@ -33,7 +46,7 @@ export default function Header() {
                     <nav>
                         <div className="inner">
                             {NAV_LINKS.map(({ id, label }) => (
-                                <a key={id} href={`#${id}`} onClick={(e) => { e.stopPropagation(); setIsOpen(false); }}>
+                                <a key={id} href={`/#${id}`} onClick={(e) => handleNavClick(e, id)}>
                                     {label}
                                 </a>
                             ))}
