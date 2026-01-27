@@ -31,12 +31,12 @@ export default function Home() {
                             Chaque projet est unique et mérite une attention personnalisée. Skybound Studio vous accompagne pour valoriser votre savoir-faire avec rigueur et passion.
                         </figcaption>
                         <div className="wrapper">
-                            <Image src="/worker1.webp" alt="Artisan menuisier travaillant avec précision sur une pièce de bois" fill loading="lazy" sizes="(max-width: 767px) 100vw, 50vw" className="image" />
+                            <Image src="/worker1.webp" alt="Artisan menuisier travaillant avec précision sur une pièce de bois" fill loading="lazy" sizes="(max-width: 767px) 100vw, 450px" className="image" />
                         </div>
                     </figure>
                     <figure className="worker">
                         <div className="wrapper">
-                            <Image src="/worker2.webp" alt="Équipe d'association organisant un événement communautaire" fill loading="lazy" sizes="(max-width: 767px) 100vw, 50vw" className="image" />
+                            <Image src="/worker2.webp" alt="Équipe d'association organisant un événement communautaire" fill loading="lazy" sizes="(max-width: 767px) 100vw, 450px" className="image" />
                         </div>
                         <figcaption>
                             De la conception à la réalisation, l'objectif est d'assurer une présence digitale claire, performante, et qui reflète pleinement votre identité.

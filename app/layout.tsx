@@ -5,6 +5,7 @@ import Intro from './components/preloader/Preloader';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Cookies from './components/cookies/Cookies';
+import Animations from './Animations';
 import './globals.scss';
 import { robotoCondensed } from './font';
 
@@ -229,6 +230,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 {children}
                 <Footer />
                 <Cookies />
+                <Animations />
                 <Analytics />
                 <SpeedInsights />
             </body>
