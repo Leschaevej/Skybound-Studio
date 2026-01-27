@@ -19,11 +19,17 @@
         height: fluid(150, 250);
         overflow: visible;
         opacity: 0;
-        will-change: opacity;
+        &.drawing, &.filled {
+            opacity: 1;
+        }
         path {
             stroke-width: 1;
             stroke: var(--mainTextColor);
-            fill: var(--mainBackgroundColor);
+            fill: transparent;
+            transition: fill 0.5s ease;
+        }
+        &.filled path {
+            fill: var(--mainTextColor);
         }
     }
     .text {
