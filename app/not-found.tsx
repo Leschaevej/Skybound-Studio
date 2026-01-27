@@ -13,7 +13,7 @@ export default function NotFound() {
                 Retournons à la base pour reprendre la mission.
             </p>
             <Link href="/" className="back">
-                Retour à l&apos;accueil
+                Retour à la base
             </Link>
         </main>
     );

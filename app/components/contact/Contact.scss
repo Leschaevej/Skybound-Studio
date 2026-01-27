@@ -1,10 +1,13 @@
-@use '../../mixins' as *;
+@use '../../Functions.scss' as *;
 
 .form {
     display: flex;
     flex-direction: column;
-    gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
-    @include width(100%, 100%, 50%);
+    gap: fluid(10, 30);
+    width: 50%;
+    @media (max-width: 1439px) {
+        width: 100%;
+    }
     input,
     textarea {
         width: 100%;
@@ -12,11 +15,11 @@
         border: none;
         border-bottom: 1px solid var(--mainTextColor);
         color: var(--mainTextColor);
-        font-size: clamp(20px, 20px + (32 - 20) * ((100vw - 320px) / (1440 - 320)), 32px);
-        height: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+        font-size: fluid(20, 32);
+        height: fluid(30, 50);
         &::placeholder {
             color: var(--mainTextColor);
-            font-size: clamp(20px, 20px + (32 - 20) * ((100vw - 320px) / (1440 - 320)), 32px);
+            font-size: fluid(20, 32);
         }
         &.invalid::placeholder {
             color: var(--errorColor);
@@ -38,7 +41,7 @@
     input:-webkit-autofill:focus,
     textarea:-webkit-autofill:focus {
         -webkit-text-fill-color: var(--mainTextColor) !important;
-        font-size: clamp(20px, 20px + (32 - 20) * ((100vw - 320px) / (1440 - 320)), 32px);
+        font-size: fluid(20, 32);
         -webkit-box-shadow: 0 0 0 1000px var(--mainBackgroundColor) inset !important;
         transition: background-color 5000s ease-in-out 0s !important;
     }
@@ -50,9 +53,9 @@
         color: var(--secondTextColor);
         background-color: var(--mainColor);
         transition: color ease 0.3s, background-color ease 0.3s, border ease 0.3s, width 0.3s ease;
-        border-radius: clamp(6px, 6px + (7.5 - 6) * ((100vw - 320px) / (1440 - 320)), 7.5px);
-        font-size: clamp(20px, 20px + (32 - 20) * ((100vw - 320px) / (1440 - 320)), 32px);
-        padding: clamp(5px, 5px + (10 - 5) * ((100vw - 320px) / (1440 - 320)), 10px) clamp(15px, 15px + (15 - 15) * ((100vw - 320px) / (1440 - 320)), 15px);
+        border-radius: fluid(6, 7.5);
+        font-size: fluid(20, 32);
+        padding: fluid(5, 10) 15px;
         &:hover,
         &.sending,
         &.success {

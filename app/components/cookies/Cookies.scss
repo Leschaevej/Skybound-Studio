@@ -1,11 +1,8 @@
-@use '../../mixins.scss' as *;
+@use '../../Functions.scss' as *;
 
 .overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     z-index: 10;
     padding: 30px;
     display: flex;
@@ -20,8 +17,8 @@
         width: 100%;
         max-height: 80vh;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        padding: clamp(20px, 20px + (30 - 20) * ((100vw - 320px) / (1440 - 320)), 30px);
-        gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
+        padding: fluid(20, 30);
+        gap: fluid(10, 30);
         transform: translateX(0);
         transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         &.entering {
@@ -38,32 +35,32 @@
             h2 {
                 padding: 0;
                 opacity: 1;
-                font-size: clamp(20px, 20px + (24 - 20) * ((100vw - 320px) / (1440 - 320)), 24px);
+                font-size: fluid(20, 24);
                 color: var(--mainTextColor);
                 transform: translateX(0);
             }
-            p{
-                font-size: clamp(16px, 16px + (20 - 16) * ((100vw - 320px) / (1440 - 320)), 20px);
+            p {
+                font-size: fluid(16, 20);
                 color: var(--mainTextColor);
             }
         }
         .content {
             display: flex;
             flex-direction: column;
-            gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
+            gap: fluid(10, 30);
             .cookie {
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
                 border: 3px solid var(--mainColor);
                 color: var(--mainTextColor);
-                padding: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
+                padding: fluid(10, 30);
                 .top {
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
                     h3 {
-                        font-size: clamp(18px, 18px + (20 - 18) * ((100vw - 320px) / (1440 - 320)), 20px);
+                        font-size: fluid(18, 20);
                         margin: 0;
                     }
                     .switch {
@@ -110,11 +107,14 @@
         }
         .actions {
             display: flex;
-            gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
-            @include flexDirection (column, row, row);
+            gap: fluid(10, 30);
+            flex-direction: row;
+            @media (max-width: 767px) {
+                flex-direction: column;
+            }
             button {
                 font-family: var(--font-roboto-condensed);
-                font-size: clamp(16px, 16px + (20 - 16) * ((100vw - 320px) / (1440 - 320)), 20px);
+                font-size: fluid(16, 20);
                 padding: 12px 20px;
                 border: 2px solid;
                 cursor: pointer;
@@ -161,4 +161,3 @@
         }
     }
 }
-

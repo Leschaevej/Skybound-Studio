@@ -1,17 +1,24 @@
+@use '../Functions.scss' as *;
+
 .legals, .confidentiality, .cookies, .devis {
-    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    padding-inline: fluid(30, 50);
     display: flex;
     flex-direction: column;
     gap: 30px;
+    ul {
+        list-style-position: inside;
+    }
 }
-.devis{
-    padding-bottom: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-
+.legals {
+    padding-top: fluid(50, 108);
+}
+.devis {
+    padding-bottom: fluid(30, 50);
 }
 .icon {
     position: fixed;
-    bottom: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-    right: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    bottom: fluid(30, 50);
+    right: fluid(30, 50);
     color: var(--mainColor);
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;

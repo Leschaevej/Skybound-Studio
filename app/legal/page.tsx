@@ -1,15 +1,17 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Header from '../components/header/Header';
 import "./page.scss";
 
 export default function Legals() {
-    const [headerHeight, setHeaderHeight] = useState(0);
     const cookieIconRef = useRef<HTMLSpanElement>(null);
     const handleCookieSettings = () => {
         window.dispatchEvent(new CustomEvent('openCookieModal', { detail: { mode: 'manage' } }));
     };
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, []);
     useEffect(() => {
         const getResponsiveValue = () => {
             const vw = window.innerWidth;
@@ -39,8 +41,8 @@ export default function Legals() {
     }, []);
     return (
         <>
-        <Header onHeightChange={setHeaderHeight} />
-        <main style={{ paddingTop: `${headerHeight}px` }}>
+        <Header />
+        <main>
             <section className="legals">
                 <h2>Mentions légales</h2>
                 <h3>1- Présentation du site</h3>

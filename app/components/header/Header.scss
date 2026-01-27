@@ -1,87 +1,88 @@
+@use '../../Functions.scss' as *;
+
 header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 2;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 4;
-    padding: clamp(20px, 20px + (30 - 20) * ((100vw - 320px) / (1440 - 320)), 30px) clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-    pointer-events: none;
-    &.scrolled {
-        background-color: var(--headerColor);
-        pointer-events: auto;
+    padding: fluid(10, 30) fluid(30, 50);
+    pointer-events: auto;
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: fluid(10, 30);
+    pointer-events: auto;
+    .logo {
+        height: fluid(29, 48);
+        color: var(--mainTextColor);
+        cursor: pointer;
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
+        transition: color $transition, transform $transition;
+        &:hover {
+            color: var(--mainColor);
+            transform: scale(1.1);
+        }
     }
-    .brand {
-        pointer-events: auto;
+    h1 {
+        color: var(--mainTextColor);
+        font-weight: 700;
+        font-size: fluid(16, 40);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+}
+.menu {
+    z-index: 5;
+    padding: fluid(5, 10) fluid(15, 30);
+    background-color: var(--mainColor);
+    border-radius: fluid(10, 15);
+    text-align: center;
+    pointer-events: auto;
+    cursor: pointer;
+    gap: fluid(10, 30);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+    span, a {
+        font-weight: bold;
+        font-size: fluid(16, 24);
+        color: var(--secondTextColor);
+        cursor: pointer;
+    }
+    &.open {
+        cursor: default;
+    }
+    nav {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows $transition;
+    }
+    .inner {
+        overflow: hidden;
         display: flex;
-        align-items: center;
-        gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
-        .logo {
-            height: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-            color: var(--mainTextColor);
-            transition: color ease 0.3s, transform ease 0.3s;
+        flex-direction: column;
+        gap: fluid(8, 15);
+        a {
+            display: block;
             cursor: pointer;
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            transition: text-decoration-color $transition;
             &:hover {
-                color: var(--mainColor);
-                transform: scale(1.1);
+                text-decoration-color: var(--secondTextColor);
             }
-        }
-        h1 {
-            color: var(--mainTextColor);
-            font-weight: 700;
-            font-size: clamp(18px, 18px + (50 - 18) * ((100vw - 320px) / (1440 - 320)), 50px);
         }
     }
-    .menu {
-        pointer-events: auto;
-        z-index: 5;
-        padding: clamp(8px, 8px + (12 - 8) * ((100vw - 320px) / (1440 - 320)), 12px) clamp(15px, 15px + (30 - 15) * ((100vw - 320px) / (1440 - 320)), 30px);
-        background-color: var(--mainColor);
-        border-radius: clamp(10px, 10px + (15 - 10) * ((100vw - 320px) / (1440 - 320)), 15px);
-        text-align: center;
-        button, a {
-            font-family: inherit;
-            font-weight: bold;
-            font-size: clamp(16px, 16px + (24 - 16) * ((100vw - 320px) / (1440 - 320)), 24px);
-            color: var(--secondTextColor);
-        }
-        button {
-            border: none;
-            cursor: pointer;
-            background: transparent;
-            width: 100%;
-        }
-        nav {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.3s ease;
-        }
+    &.open nav {
+        grid-template-rows: 1fr;
         .inner {
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            a {
-                padding-top: clamp(8px, 8px + (15 - 8) * ((100vw - 320px) / (1440 - 320)), 15px);
-                text-decoration: none;
-                transition: opacity 0.3s ease;
-                &:hover {
-                    opacity: 0.7;
-                }
-            }
-        }
-        &.open nav {
-            grid-template-rows: 1fr;
+            padding-top: fluid(8, 15);
         }
     }
 }
 .backdrop {
-    pointer-events: auto;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 3;
+    inset: 0;
+    z-index: 1;
+    pointer-events: auto;
 }

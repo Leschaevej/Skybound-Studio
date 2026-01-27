@@ -1,3 +1,5 @@
+@use 'Functions' as *;
+
 :root {
     --mainColor: #bb663f;
     --mainBackgroundColor: #1A1A1A;
@@ -15,28 +17,7 @@
     --strategyColor: #D4C887;
     --errorColor: #c52724;
 }
-::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
-}
-::-webkit-scrollbar-track {
-    margin: 0;
-}
-::-webkit-scrollbar-thumb {
-    background-color: var(--mainTextColor);
-    border-radius: 6px;
-    border: 3px solid var(--mainBackgroundColor);
-}
-::-webkit-scrollbar-thumb:hover {
-    background-color: #CCCCCC;
-}
-input, textarea, p, a {
-    user-select: text;
-    -webkit-user-select: text;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: transparent;
-}
-a[href^="tel"] {
+a {
     color: var(--mainTextColor);
     text-decoration: none;
     pointer-events: auto;
@@ -47,10 +28,6 @@ a[href^="tel"] {
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
 body {
     overflow-x: hidden;
     background-color: var(--mainBackgroundColor);
@@ -60,16 +37,17 @@ main{
 }
 h2 {
     text-align: center;
-    padding-block: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-    font-size: clamp(26px, 26px + (68 - 26) * ((100vw - 320px) / (1440 - 320)), 68px);
+    padding-block: fluid(30, 50);
+    font-size: fluidFont(1.625, 4.25);
 }
 h3 {
     margin: 10px 0;
-    font-size: clamp(24px, 24px + (48 - 24) * ((100vw - 320px) / (1440 - 320)), 48px);
+    font-size: fluidFont(1.5, 3);
 }
 h4{
-    font-size: clamp(20px, 20px + (40 - 20) * ((100vw - 320px) / (1440 - 320)), 40px);
+    font-size: fluidFont(1.25, 2.5);
 }
-p, figcaption, li {
-    font-size: clamp(20px, 20px + (32 - 20) * ((100vw - 320px) / (1440 - 320)), 32px);
+p, a, figcaption, li {
+    line-height: 1.6;
+    font-size: fluidFont(1.25, 2);
 }

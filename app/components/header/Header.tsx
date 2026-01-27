@@ -1,82 +1,39 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import "./Header.scss";
 import { robotoSerif } from '../../font';
 import Logo from '../../../app/assets/logo.svg';
-
-interface HeaderProps {
-    onHeightChange?: (height: number) => void;
-}
 
 const NAV_LINKS = [
     { id: 'hero', label: 'Accueil' },
     { id: 'services', label: 'Services' },
     { id: 'contact', label: 'Contact' },
 ];
-
-export default function Header({ onHeightChange }: HeaderProps) {
-    const [scrolled, setScrolled] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+export default function Header() {
     const pathname = usePathname();
-    const router = useRouter();
-    const headerRef = useRef<HTMLElement>(null);
-
-    useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 0);
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    useEffect(() => {
-        if (headerRef.current && onHeightChange) {
-            onHeightChange(headerRef.current.getBoundingClientRect().height);
-        }
-    }, [onHeightChange]);
-
-    const navigateToSection = (id: string) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const handleLogoClick = (e: React.MouseEvent) => {
         if (pathname === '/') {
-            const element = document.getElementById(id);
-            if (element && headerRef.current) {
-                const headerHeight = headerRef.current.getBoundingClientRect().height;
-                const y = element.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            }
-        } else {
-            sessionStorage.setItem('scrollToSection', id);
-            router.push('/');
-        }
-        setIsOpen(false);
-    };
-
-    const handleLogoClick = () => {
-        if (pathname === '/') {
-            navigateToSection('hero');
-        } else {
-            router.push('/');
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     };
-
     return (
         <>
-            <header ref={headerRef} className={scrolled ? 'scrolled' : ''}>
-                <div className="brand">
-                    <Logo
-                        className="logo"
-                        onClick={handleLogoClick}
-                        style={{ cursor: 'pointer' }}
-                        aria-label="Retour à l'accueil"
-                    />
+            <header>
+                <Link href="/" className="brand" onClick={handleLogoClick}>
+                    <Logo className="logo" aria-label="Retour à l'accueil" />
                     <h1 className={robotoSerif.className}>Skybound Studio</h1>
-                </div>
-                <div className={`menu ${isOpen ? 'open' : ''}`}>
-                    <button onClick={() => setIsOpen(!isOpen)}>MENU</button>
+                </Link>
+                <div className={`menu ${isOpen ? 'open' : ''}`} onClick={() => !isOpen && setIsOpen(true)}>
+                    <span onClick={(e) => { e.stopPropagation(); setIsOpen(!isOpen); }}>MENU</span>
                     <nav>
                         <div className="inner">
                             {NAV_LINKS.map(({ id, label }) => (
-                                <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); navigateToSection(id); }}>
+                                <a key={id} href={`#${id}`} onClick={(e) => { e.stopPropagation(); setIsOpen(false); }}>
                                     {label}
                                 </a>
                             ))}

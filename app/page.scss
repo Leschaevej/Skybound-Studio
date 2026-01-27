@@ -1,4 +1,4 @@
-@use './mixins.scss' as *;
+@use './Functions.scss' as *;
 
 h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not(.cookies h2):not(.devis h2):not(.modal h2) {
     opacity: 0;
@@ -15,27 +15,40 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
     display: flex;
     color: var(--mainColor);
     z-index: 1;
-    background: url('/fond.webp') no-repeat;
+    background: url('/fond.webp') no-repeat center top;
     background-size: cover;
     overflow-x: visible;
     overflow-y: hidden;
-    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-    @include backgroundPosition(63% top, 65% top, center top);
-    @include flexDirection(column, row, row);
-    @include justifyContent(space-around, space-between, space-between);
+    padding: fluid(50, 108) fluid(30, 50);
+    flex-direction: row;
+    justify-content: space-between;
+    @media (max-width: 1439px) {
+        background-position: 65% top;
+    }
+    @media (max-width: 767px) {
+        background-position: 63% top;
+        flex-direction: column;
+        justify-content: space-around;
+    }
     .intro {
         display: flex;
         flex-direction: column;
         overflow: visible;
-        @include width(100%, 40%, 40%);
+        width: 40%;
+        @media (max-width: 767px) {
+            width: 100%;
+        }
         h2 {
             font-weight: 800;
             text-align: left;
-            font-size: clamp(22px, 22px + (48 - 22) * ((100vw - 320px) / (1440 - 320)), 48px);
+            font-size: fluid(22, 48);
             opacity: 0;
             transform: translateX(-50px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            @include width(80%, 100%, 100%);
+            width: 100%;
+            @media (max-width: 767px) {
+                width: 80%;
+            }
             &.animate {
                 opacity: 1;
                 transform: translateX(0);
@@ -45,12 +58,15 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
             font-weight: 400;
             margin-left: auto;
             padding-bottom: 30px;
-            font-size: clamp(20px, 20px + (32 - 20) * ((100vw - 320px) / (1440 - 320)), 32px);
+            font-size: fluid(20, 32);
             opacity: 0;
             transform: translateX(-50px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
             transition-delay: 0.2s;
-            @include width(35%, 100%, 100%);
+            width: 100%;
+            @media (max-width: 767px) {
+                width: 35%;
+            }
             &.animate {
                 opacity: 1;
                 transform: translateX(0);
@@ -79,9 +95,9 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
             color: var(--mainColor);
             opacity: 0;
             transition: background-color ease 0.3s, box-shadow ease 0.3s, opacity 0.6s ease-out;
-            border-radius: clamp(7.5px, 7.5px + (15 - 7.5) * ((100vw - 320px) / (1440 - 320)), 15px);
-            font-size: clamp(22px, 22px + (48 - 22) * ((100vw - 320px) / (1440 - 320)), 48px);
-            height: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (1440 - 320)), 100px);
+            border-radius: fluid(7.5, 15);
+            font-size: fluid(22, 48);
+            height: fluid(50, 100);
             &.animate-frame {
                 opacity: 1;
             }
@@ -103,22 +119,24 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
         }
     }
 }
-.dream{
-    max-width: 1440px;
+.dream {
     margin: 0 auto;
-    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    padding-inline: fluid(30, 50);
     overflow-x: visible;
-    .content{
+    .content {
         display: flex;
         flex-direction: column;
-        gap: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+        gap: fluid(30, 50);
         overflow-x: visible;
-        .worker{
+        .worker {
             display: flex;
             align-items: center;
-            gap: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+            gap: fluid(30, 50);
             overflow-x: visible;
-            @include flexDirection(column, row, row);
+            flex-direction: row;
+            @media (max-width: 767px) {
+                flex-direction: column;
+            }
             &:first-child .wrapper {
                 opacity: 0;
                 transform: translateX(50px);
@@ -150,7 +168,6 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
                 opacity: 0;
                 transform: translateX(50px);
                 transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-
                 &.animate {
                     opacity: 1;
                     transform: translateX(0);
@@ -160,14 +177,20 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
                 position: relative;
                 aspect-ratio: 4 / 3;
                 overflow: hidden;
-                border-radius: clamp(20px, 20px + (50 - 20) * ((100vw - 320px) / (1440 - 320)), 50px);
-                @include width(100%, 50%, 50%);
+                border-radius: fluid(20, 50);
+                width: 50%;
+                @media (max-width: 767px) {
+                    width: 100%;
+                }
                 .image {
                     object-fit: cover;
                 }
             }
             figcaption {
-                @include width(100%, 50%, 50%);
+                width: 50%;
+                @media (max-width: 767px) {
+                    width: 100%;
+                }
             }
             @media (max-width: 767px) {
                 flex-direction: column;
@@ -181,10 +204,9 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
         }
     }
 }
-.method{
-    max-width: 1440px;
+.method {
     margin: 0 auto;
-    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    padding-inline: fluid(30, 50);
     overflow-x: visible;
     h3 {
         opacity: 0;
@@ -213,35 +235,37 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
             transform: translateX(0);
         }
     }
-    .list{
+    .list {
         display: flex;
         justify-content: space-between;
         gap: 50px;
-        @include flexDirection(column, column, row);
-        .column{
+        flex-direction: row;
+        @media (max-width: 1439px) {
+            flex-direction: column;
+        }
+        .column {
             display: flex;
             flex-direction: column;
             text-align: left;
-            .radar{
+            .radar {
                 color: var(--radarColor);
-                height: clamp(100px, 100px + (200 - 100) * ((100vw - 320px) / (1440 - 320)), 200px);
+                height: fluid(100, 200);
             }
-            .fighter{
+            .fighter {
                 color: var(--fighterColor);
-                height: clamp(100px, 100px + (200 - 100) * ((100vw - 320px) / (1440 - 320)), 200px);
+                height: fluid(100, 200);
             }
-            .tower{
+            .tower {
                 color: var(--towerColor);
-                height: clamp(100px, 100px + (200 - 100) * ((100vw - 320px) / (1440 - 320)), 200px);
+                height: fluid(100, 200);
             }
         }
     }
 }
-.services{
-    max-width: 1440px;
+.services {
     margin: 0 auto;
     text-align: center;
-    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    padding-inline: fluid(30, 50);
     overflow-x: visible;
     svg {
         opacity: 0;
@@ -258,7 +282,6 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
                 opacity: 0;
                 transform: translateX(-50px);
                 transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-
                 &.animate {
                     opacity: 1;
                     transform: translateX(0);
@@ -270,7 +293,6 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
                 opacity: 0;
                 transform: translateX(50px);
                 transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-
                 &.animate {
                     opacity: 1;
                     transform: translateX(0);
@@ -300,32 +322,31 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
             }
         }
     }
-    .grid{
+    .grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-        .create{
+        gap: fluid(30, 50);
+        .create {
             color: var(--createColor);
-            height: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (1440 - 320)), 100px);
+            height: fluid(50, 100);
         }
-        .refresh{
+        .refresh {
             color: var(--refreshColor);
-            height: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (1440 - 320)), 100px);
+            height: fluid(50, 100);
         }
-        .wrench{
+        .wrench {
             color: var(--wrenchColor);
-            height: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (1440 - 320)), 100px);
+            height: fluid(50, 100);
         }
-        .strategy{
+        .strategy {
             color: var(--strategyColor);
-            height: clamp(50px, 50px + (100 - 50) * ((100vw - 320px) / (1440 - 320)), 100px);
+            height: fluid(50, 100);
         }
     }
 }
-.behind{
-    max-width: 1440px;
+.behind {
     margin: 0 auto;
-    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    padding-inline: fluid(30, 50);
     overflow-x: visible;
     p {
         opacity: 0;
@@ -336,17 +357,16 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
             transform: translateX(0);
         }
     }
-    .content{
+    .content {
         display: flex;
         flex-direction: column;
-        gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
+        gap: fluid(10, 30);
     }
 }
-.contact{
-    max-width: 1440px;
+.contact {
     margin: 0 auto;
-    padding-inline: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-    padding-bottom: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+    padding-inline: fluid(30, 50);
+    padding-bottom: fluid(30, 50);
     overflow-x: visible;
     .content > p {
         opacity: 0;
@@ -377,16 +397,17 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
             transform: translateX(0);
         }
     }
-    .content{
+    .content {
         display: flex;
         flex-direction: column;
-        gap: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-        .panel{ 
+        gap: fluid(30, 50);
+        .panel {
             display: flex;
             justify-content: space-between;
-            gap: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-            @include flexDirection(column, column, row);
+            gap: fluid(30, 50);
+            flex-direction: row;
             @media (max-width: 1439px) {
+                flex-direction: column;
                 .details {
                     order: 2;
                 }
@@ -394,19 +415,19 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
                     order: 1;
                 }
             }
-            .details{
+            .details {
                 display: flex;
                 flex-direction: column;
-                gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
-                .social{
+                gap: fluid(10, 30);
+                .social {
                     display: flex;
-                    gap: clamp(10px, 10px + (30 - 10) * ((100vw - 320px) / (1440 - 320)), 30px);
-                    img{
-                        height: clamp(36px, calc(36px + 24 * (100vw - 320px) / 1120), 60px);
+                    gap: fluid(10, 30);
+                    img {
+                        height: fluid(36, 60);
                         width: auto;
                         transition: transform 0.3s ease;
                         cursor: pointer;
-                        &:hover{
+                        &:hover {
                             transform: scale(1.2);
                         }
                     }

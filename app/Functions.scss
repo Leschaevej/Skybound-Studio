@@ -1,0 +1,27 @@
+@use 'sass:math';
+
+$transition: 0.3s ease;
+@function fluid($min, $max, $min-vw: 320, $max-vw: 1440) {
+    $slope: math.div($max - $min, $max-vw - $min-vw);
+    $intercept: $min - $slope * $min-vw;
+    $min-rem: math.div($min, 16);
+    $max-rem: math.div($max, 16);
+    $intercept-rem: math.div($intercept, 16);
+    @if $min > $max {
+        @return clamp(#{$max-rem}rem, #{$intercept-rem}rem + #{$slope * 100}vw, #{$min-rem}rem);
+    } @else {
+        @return clamp(#{$min-rem}rem, #{$intercept-rem}rem + #{$slope * 100}vw, #{$max-rem}rem);
+    }
+}
+@function fluidFont($min-rem, $max-rem, $min-vw: 375, $max-vw: 1440) {
+    $min-px: $min-rem * 16;
+    $max-px: $max-rem * 16;
+    $slope: math.div($max-px - $min-px, $max-vw - $min-vw);
+    $intercept: $min-px - $slope * $min-vw;
+    $intercept-rem: math.div($intercept, 16);
+    @if $min-rem > $max-rem {
+        @return clamp(#{$max-rem}rem, #{$intercept-rem}rem + #{$slope * 100}vw, #{$min-rem}rem);
+    } @else {
+        @return clamp(#{$min-rem}rem, #{$intercept-rem}rem + #{$slope * 100}vw, #{$max-rem}rem);
+    }
+}

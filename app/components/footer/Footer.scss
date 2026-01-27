@@ -1,6 +1,6 @@
-@use '../../mixins' as *;
+@use '../../Functions.scss' as *;
 
-footer{
+footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,34 +8,38 @@ footer{
     background-color: var(--footerColor);
     color: var(--mainTextColor);
     border-top: 3px solid var(--mainColor);
-    padding: clamp(20px, 20px + (30 - 20) * ((100vw - 320px) / (1440 - 320)), 30px) clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
-    .brand{
+    padding: fluid(20, 30) fluid(30, 50);
+    .brand {
         display: flex;
         align-items: center;
         gap: 20px;
         .logo {
-            height: clamp(30px, 30px + (50 - 30) * ((100vw - 320px) / (1440 - 320)), 50px);
+            height: fluid(30, 50);
         }
-        .legal{
+        .legal {
             color: var(--mainTextColor);
             text-decoration: none;
-            font-size: clamp(16px, 16px + (22 - 16) * ((100vw - 320px) / (1440 - 320)), 22px);
+            font-size: fluid(16, 22);
             transition: color 0.3s ease;
             &:hover {
                 color: var(--mainColor);
             }
         }
     }
-    p{
+    p {
         display: flex;
         gap: 10px;
-        @include alignItems(flex-start, center, center);
-        @include flexDirection(column, row, row);
-        .copy{
-            font-size: clamp(16px, 16px + (32 - 16) * ((100vw - 320px) / (1440 - 320)), 32px);
+        align-items: center;
+        flex-direction: row;
+        @media (max-width: 767px) {
+            align-items: flex-start;
+            flex-direction: column;
         }
-        .brand{
-            font-size: clamp(20px, 20px + (48 - 20) * ((100vw - 320px) / (1440 - 320)), 48px);
+        .copy {
+            font-size: fluid(16, 32);
+        }
+        .brand {
+            font-size: fluid(20, 48);
         }
     }
 }
