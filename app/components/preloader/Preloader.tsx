@@ -33,7 +33,6 @@ interface PreloaderProps {
 }
 export default function Preloader({ children }: PreloaderProps) {
     const [visible, setVisible] = useState(true);
-    const [showContent, setShowContent] = useState(false);
     const [animateOut, setAnimateOut] = useState(false);
     const [textIndex, setTextIndex] = useState(0);
     const [logoDrawn, setLogoDrawn] = useState(false);
@@ -44,7 +43,6 @@ export default function Preloader({ children }: PreloaderProps) {
         const isReload = navigationEntry?.type === 'reload';
         if (hasSeenPreloader || isReload) {
             setVisible(false);
-            setShowContent(true);
         } else {
             sessionStorage.setItem('preloader-seen', 'true');
         }
@@ -96,12 +94,6 @@ export default function Preloader({ children }: PreloaderProps) {
     );
     useTimeout(
         () => {
-            setShowContent(true);
-        },
-        animateOut ? 0 : null
-    );
-    useTimeout(
-        () => {
             setVisible(false);
         },
         animateOut ? ANIMATION_DURATIONS.slide : null
@@ -128,7 +120,7 @@ export default function Preloader({ children }: PreloaderProps) {
                     </div>
                 </div>
             )}
-            {showContent && children}
+            {children}
         </>
     );
 }

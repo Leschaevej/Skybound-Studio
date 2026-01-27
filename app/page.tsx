@@ -29,8 +29,7 @@ export default function Home() {
         }
     };
     useEffect(() => {
-        const timer = setTimeout(startHeroAnimations, 200);
-        return () => clearTimeout(timer);
+        startHeroAnimations();
     }, []);
     useEffect(() => {
         const scrollTarget = sessionStorage.getItem('scrollTarget');
@@ -161,13 +160,13 @@ export default function Home() {
                             <p>1 Bis Cour D&apos;orbitelle<br/>Aix en Provence 13100</p>
                             <div className="social">
                                 <a href="https://www.facebook.com/profile.php?id=61583485317456" target="_blank" rel="noopener noreferrer">
-                                    <img src="/facebook.webp" alt="Facebook" width={40} height={40} />
+                                    <Image src="/facebook.webp" alt="Facebook" width={40} height={40} />
                                 </a>
                                 <a href="https://www.instagram.com/skybound_studio/?next=%2F" target="_blank" rel="noopener noreferrer">
-                                    <img src="/instagram.webp" alt="Instagram" width={40} height={40} />
+                                    <Image src="/instagram.webp" alt="Instagram" width={40} height={40} />
                                 </a>
                                 <a href="https://x.com/Skybound_Studio" target="_blank" rel="noopener noreferrer">
-                                    <img src="/x.webp" alt="X" width={40} height={40} />
+                                    <Image src="/x.webp" alt="X" width={40} height={40} />
                                 </a>
                             </div>
                         </address>

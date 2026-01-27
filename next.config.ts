@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
     allowedDevOrigins: ['192.168.1.*', '192.168.*.*'],
     devIndicators: false,
-    productionBrowserSourceMaps: true,
+    productionBrowserSourceMaps: false,
     images: {
         formats: ['image/webp', 'image/avif'],
         unoptimized: false,
