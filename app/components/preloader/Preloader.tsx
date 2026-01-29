@@ -5,8 +5,8 @@ import "./Preloader.scss";
 import Logo from '../../assets/logo.svg';
 import { robotoSerif } from '../../font';
 
-const animationDuration = 1500;
-const slideDelay = 1000;
+const animationDuration = 1000;
+const slideDelay = 1500;
 
 export default function Preloader() {
     const [drawing, setDrawing] = useState(false);
@@ -71,7 +71,7 @@ export default function Preloader() {
     useEffect(() => {
         if (!textVisible) return;
         if (textIndex < text.length) {
-            const timer = setTimeout(() => setTextIndex(textIndex + 1), 50);
+            const timer = setTimeout(() => setTextIndex(textIndex + 1), animationDuration / text.length);
             return () => clearTimeout(timer);
         }
     }, [textIndex, textVisible]);
