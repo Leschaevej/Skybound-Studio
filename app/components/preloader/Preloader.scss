@@ -41,12 +41,14 @@
             visibility: hidden;
             font-size: fluid(36, 100);
         }
-        h2 {
+        .typing {
             position: absolute;
             top: 0;
             left: 0;
             font-size: fluid(36, 100);
+            font-weight: 700;
             white-space: nowrap;
+            display: block;
             &::after {
                 content: "|";
                 animation: blink 1s steps(1) infinite;
@@ -64,7 +66,7 @@
         .logo {
             will-change: auto;
         }
-        .text h2::after {
+        .text .typing::after {
             animation: none;
         }
     }

@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import "./Preloader.scss";
 import Logo from '../../assets/logo.svg';
+import { robotoSerif } from '../../font';
 
 const drawDuration = 1500;
 const textDelay = 500;
@@ -85,11 +86,11 @@ export default function Preloader() {
                 className={`logo ${drawing ? "drawing" : ""} ${fill ? "filled" : ""}`}
                 aria-hidden="true"
             />
-            <div className="text" style={{ opacity: textVisible ? 1 : 0 }}>
+            <div className={`text ${robotoSerif.className}`} style={{ opacity: textVisible ? 1 : 0 }}>
                 <span className="placeholder" aria-hidden="true">{text}</span>
-                <h2>
+                <span className="typing">
                     {text.slice(0, textIndex)}
-                </h2>
+                </span>
             </div>
         </div>
     );
