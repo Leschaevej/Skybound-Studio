@@ -218,8 +218,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <link rel="dns-prefetch" href="https://vitals.vercel-analytics.com" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" />
-                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

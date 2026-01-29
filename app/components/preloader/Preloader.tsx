@@ -5,8 +5,7 @@ import "./Preloader.scss";
 import Logo from '../../assets/logo.svg';
 import { robotoSerif } from '../../font';
 
-const drawDuration = 1500;
-const textDelay = 500;
+const animationDuration = 1500;
 const slideDelay = 1000;
 
 export default function Preloader() {
@@ -37,7 +36,7 @@ export default function Preloader() {
 
         const start = performance.now();
         const animate = (now: number) => {
-            const progress = Math.min((now - start) / drawDuration, 1);
+            const progress = Math.min((now - start) / animationDuration, 1);
             paths.forEach(path => {
                 const length = path.getTotalLength();
                 path.style.strokeDasharray = `${length}`;
@@ -48,12 +47,12 @@ export default function Preloader() {
             }
         };
         setDrawing(true);
+        setTextVisible(true);
         requestAnimationFrame(animate);
 
         const fillTimer = setTimeout(() => {
             setFill(true);
-            setTextVisible(true);
-        }, drawDuration);
+        }, animationDuration);
 
         const slideTimer = setTimeout(() => {
             setSlideUp(true);
@@ -61,7 +60,7 @@ export default function Preloader() {
                 setHidden(true);
                 sessionStorage.setItem('preloader-seen', 'true');
             }, slideDelay);
-        }, drawDuration + textDelay + text.length * 50 + slideDelay);
+        }, animationDuration + slideDelay);
 
         return () => {
             clearTimeout(fillTimer);
