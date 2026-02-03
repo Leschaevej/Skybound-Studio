@@ -2,6 +2,8 @@ import Image from "next/image";
 import { robotoSerif } from "./font";
 import "./page.scss";
 import Contact from "./components/contact/Contact";
+import Carousel from "./components/carousel/Carousel";
+import projets from "./projects.json";
 import Radar from './assets/radar.svg';
 import Fighter from './assets/fighter.svg';
 import Tower from './assets/tower.svg';
@@ -88,6 +90,10 @@ export default function Home() {
                         <p>Conseils personnalisés pour booster votre présence en ligne.</p>
                     </div>
                 </div>
+            </section>
+            <section className="projects">
+                <h2 className={robotoSerif.className}>Nos réalisations</h2>
+                <Carousel projects={projets} />
             </section>
             <section className="behind">
                 <h2 className={robotoSerif.className}>Derrière Skybound Studio</h2>

@@ -15,7 +15,6 @@ export default function Animations() {
             }
         }
     }, []);
-
     useEffect(() => {
         const observerOptions = { threshold: 0.80 };
         const handleIntersection = (entries: IntersectionObserverEntry[]) => {
@@ -32,6 +31,5 @@ export default function Animations() {
         });
         return () => intersectionObserver.disconnect();
     }, []);
-
     return null;
 }

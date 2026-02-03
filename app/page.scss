@@ -322,6 +322,11 @@ h2:not(.hero h2):not(.preloader h2):not(.legals h2):not(.confidentiality h2):not
         }
     }
 }
+.projects {
+    margin: 0 auto;
+    padding-inline: fluid(30, 150);
+    overflow-x: visible;
+}
 .behind {
     margin: 0 auto;
     padding-inline: fluid(30, 150);

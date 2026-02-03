@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Jimmy Hub",
+        "imageSrc": "/jimmyhub.webp",
+        "description": "Portfolio personnel de développeur full-stack. Site vitrine moderne présentant mes compétences en développement web, mes projets réalisés et mon parcours professionnel.",
+        "technologies": ["Next.js", "TypeScript", "Vercel"],
+        "liveLink": "https://jimmyhub.fr"
+    },
+    {
+        "title": "Mathilde Dubois",
+        "imageSrc": "/mathilde.webp",
+        "description": "Portfolio photographique professionnel mettant en valeur le travail créatif. Galerie optimisée avec design épuré, navigation intuitive et mise en avant des visuels artistiques.",
+        "technologies": ["Next.js", "TypeScript", "Vercel"],
+        "liveLink": "https://mathildedubois.fr"
+    }
+]
