@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import "./Header.scss";
 import { robotoSerif } from '../../font';
@@ -14,6 +14,7 @@ const NAV_LINKS = [
 ];
 export default function Header() {
     const pathname = usePathname();
+    const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
 
     const handleLogoClick = (e: React.MouseEvent) => {
@@ -21,7 +22,8 @@ export default function Header() {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
-            sessionStorage.setItem('scrollTarget', 'hero');
+            e.preventDefault();
+            router.push('/');
         }
     };
     const handleNavClick = (e: React.MouseEvent, id: string) => {
