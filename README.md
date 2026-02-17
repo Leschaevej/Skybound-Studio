@@ -4,7 +4,7 @@ Site vitrine de **Skybound Studio**, studio créatif spécialisé en design et d
 
 🔗 **[Voir le site en ligne](https://skybound-studio.vercel.app)**
 
-![Aperçu du site Skybound Studio](./public/screenshot.png)
+![Aperçu du site Skybound Studio](./public/skybound.webp)
 
 ![Next.js](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
